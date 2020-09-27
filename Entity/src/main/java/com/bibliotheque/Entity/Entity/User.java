@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "user")
-@Data(staticConstructor = "of")
+@Data
 public class User {
 
     @Id

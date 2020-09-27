@@ -14,15 +14,13 @@ import java.util.Date;
 @Data
 public class Book {
 
-    @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-    private int id;
+   @Id
+    public int id;
     public String title;
     public String author;
     public Date publication;
     public String resume;
 
+ }
 
 
-
-}
