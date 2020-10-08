@@ -12,6 +12,7 @@
     <artifactId>Entity</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Entity</name>
+    <packaging>jar</packaging>
     <description>Entity Projet 7</description>
 
     <properties>
@@ -50,6 +51,7 @@
         <version>${mapstruct.version}</version>
         <scope>provided</scope>
     </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -85,7 +87,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -106,7 +108,7 @@
             </plugin>
         </plugins>
     </build>
-
-
-
 </project>
+
+
+
