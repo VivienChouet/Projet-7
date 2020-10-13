@@ -34,6 +34,12 @@ public class BookService {
     }
 
     public void update(Book book) {
+        logger.info("update book id = " + book.id);
         bookRepository.save(book);
+    }
+
+    public void delete(Book book) {
+        logger.info("delete book id = " + book.id);
+        bookRepository.delete(book);
     }
 }

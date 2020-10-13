@@ -9,9 +9,10 @@ import javax.persistence.*;
 @Data
 public class User {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    public int id;
     public String name ;
     public String email;
     public String password;

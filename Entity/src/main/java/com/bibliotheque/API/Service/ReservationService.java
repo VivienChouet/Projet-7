@@ -1,6 +1,7 @@
 package com.bibliotheque.API.Service;
 
 import com.bibliotheque.API.Entity.Reservation;
+import com.bibliotheque.API.Entity.User;
 import com.bibliotheque.API.Repository.ReservationRepository;
 
 import com.bibliotheque.API.Utility.LoggingController;
@@ -37,5 +38,10 @@ ReservationRepository reservationRepository;
     public void delete(int id) {
         logger.info("Delete reservation = " +  id);
         reservationRepository.delete(findById(id));
+    }
+
+    public List<Reservation> findByUser_id(int id) {
+        logger.info("User Search = " + id);
+        return reservationRepository.findByUser_id(id);
     }
 }

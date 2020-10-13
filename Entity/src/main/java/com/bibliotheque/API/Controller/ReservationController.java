@@ -2,10 +2,13 @@ package com.bibliotheque.API.Controller;
 
 
 
+import ch.qos.logback.core.pattern.util.RegularEscapeUtil;
 import com.bibliotheque.API.Entity.Dto.ReservationDTO;
 import com.bibliotheque.API.Entity.Mapper.ReservationMapper;
 import com.bibliotheque.API.Entity.Reservation;
+import com.bibliotheque.API.Entity.User;
 import com.bibliotheque.API.Service.ReservationService;
+import com.bibliotheque.API.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +27,9 @@ public class ReservationController {
 
     @Autowired
     ReservationMapper reservationMapper;
+
+    @Autowired
+    UserService userService;
 
     @GetMapping("/")
     public ResponseEntity<List<ReservationDTO>> listReservation (){
@@ -62,5 +68,11 @@ public class ReservationController {
     public ResponseEntity<ReservationDTO> deleteReservation (@PathVariable int id){
         reservationService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<ReservationDTO>> listReservationByUserId (@PathVariable int id){
+        List<Reservation> reservations = this.reservationService.findByUser_id(id);
+        return new ResponseEntity<>(reservationMapper.toDto(reservations), HttpStatus.OK);
     }
 }

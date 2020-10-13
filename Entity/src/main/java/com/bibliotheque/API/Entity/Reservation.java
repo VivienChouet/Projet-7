@@ -17,7 +17,7 @@ public class Reservation {
     public Date date_fin;
 
     @ManyToOne
-    private User users;
+    private User user;
     @ManyToOne
     private Exemplaire exemplaire;
 }

@@ -24,7 +24,7 @@ public class BookController {
     BookMapper bookMapper;
 
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public ResponseEntity <List<BookDTO>>listOfBooks() {
         List<Book> books = this.bookService.findAll();
         System.out.println("book = " + books);
@@ -51,6 +51,17 @@ public class BookController {
     @PutMapping("/")
     public ResponseEntity <BookDTO> updateBook(@RequestBody BookDTO bookDTO){
         bookService.update(bookMapper.toEntity(bookDTO));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<BookDTO> deleteBook (@PathVariable int id){
+        Book book  = this.bookService.findById(id);
+        if (book == null)
+        {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        bookService.delete(book);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
