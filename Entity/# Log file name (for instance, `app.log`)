@@ -4771,3 +4771,39 @@ java.sql.SQLIntegrityConstraintViolationException: Column 'user_id' cannot be nu
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+2020-10-28 [http-nio-8080-exec-3] INFO  c.b.API.Utility.LoggingController - check login in progress
+2020-10-28 [http-nio-8080-exec-3] INFO  c.b.API.Utility.LoggingController - Check login success
+2020-10-28 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - List User
+2020-10-28 [main] INFO  c.bibliotheque.API.EntityApplication - Starting EntityApplication on DESKTOP-IIRVTB3 with PID 19348 (E:\Programation\Projet\Projet-7\Entity\target\classes started by vivie in E:\Programation\Projet\Projet-7\Entity)
+2020-10-28 [main] INFO  c.bibliotheque.API.EntityApplication - No active profile set, falling back to default profiles: default
+2020-10-28 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-10-28 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 47ms. Found 4 JPA repository interfaces.
+2020-10-28 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-10-28 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-10-28 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-10-28 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-10-28 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 894 ms
+2020-10-28 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-28 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-10-28 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-10-28 [task-1] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-10-28 [task-1] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.20.Final
+2020-10-28 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-10-28 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: bb026d73-64e9-4740-8b0a-9aaa3d527687
+
+2020-10-28 [task-1] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-10-28 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@83468e, org.springframework.security.web.context.SecurityContextPersistenceFilter@1b7d53, org.springframework.security.web.header.HeaderWriterFilter@12828c9, org.springframework.security.web.authentication.logout.LogoutFilter@5272be, com.bibliotheque.API.Utility.JWTAuthorizationFilter@12ce069, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1c3502b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@b9834c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@17fb838, org.springframework.security.web.session.SessionManagementFilter@e13b7, org.springframework.security.web.access.ExceptionTranslationFilter@2b6e1a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1d8899]
+2020-10-28 [task-1] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-10-28 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-10-28 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories…
+2020-10-28 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-10-28 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-10-28 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized!
+2020-10-28 [main] INFO  c.bibliotheque.API.EntityApplication - Started EntityApplication in 2.841 seconds (JVM running for 3.619)
+2020-10-28 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-10-28 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-10-28 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2020-10-28 [http-nio-8080-exec-1] INFO  c.b.API.Utility.LoggingController - List User
+2020-10-28 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - find UserId = 2
