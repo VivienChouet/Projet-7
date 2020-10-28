@@ -1,6 +1,5 @@
 package com.bibliotheque.API.Service;
 
-import com.bibliotheque.API.Repository.RoleRepository;
 import com.bibliotheque.API.Repository.UserRepository;
 import com.bibliotheque.API.Entity.User;
 import com.bibliotheque.API.Utility.LoggingController;
@@ -24,9 +23,6 @@ public class UserService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @Autowired
-    RoleRepository roleRepository;
-
     public List<User> findAll() {
         logger.info("List User");
         List<User> users = this.userRepository.findAll();
@@ -48,5 +44,24 @@ public class UserService {
     public void delete(int id) {
         logger.info("delete User = " + id);
         userRepository.delete(findById(id));
+    }
+
+    public Boolean loginUser(String user, String password){
+        logger.info("check login in progress");
+        User user1 = userRepository.findByName(user);
+        if (passwordEncoder.matches(password, user1.getPassword()))
+        {
+            logger.info("Check login success");
+            return true;
+        }
+        logger.info("check login failed");
+        return false;
+    }
+
+    public User findUserByToken(String token){
+        logger.info("find User with token : " + token);
+        User user = this.userRepository.findByToken(token);
+
+        return user;
     }
 }
