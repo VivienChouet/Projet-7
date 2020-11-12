@@ -64,4 +64,10 @@ public class UserService {
 
         return user;
     }
+
+ public User findByUsername(String username) {
+        logger.info("find By Username = " + username);
+ User user = userRepository.findByName(username);
+        return user;
+    }
 }

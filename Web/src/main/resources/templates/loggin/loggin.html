@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:include="fragment/block :: headerFragment"></head>
+
+<header th:insert="fragment/header :: header(barnav)"></header>
+
+<div class="row" style="justify-content: center; align-content: center; padding-top: 2%">
+    <div class="panel col-md-5" id="Login"
+         style="width: 100% ;background: whitesmoke; justify-items: center; align-items: center">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><h1>Login Form</h1></div>
+            <div class="panel-body">
+                <form action="/" method="post" th:action="@{/login}">
+                    <div class="form-group has-feedback">
+                        <input class="form-control" name="username" placeholder="Email"
+                               type="email"/> <span
+                            class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input class="form-control" name="password" placeholder="Password"
+                               type="password"/> <span
+                            class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input name="remember-me" type="checkbox"> Remember Me
+                        </label>
+                    </div>
+                    <div class="row" style="justify-content: center">
+                        <div class="form-group col-xs-offset-8 col-xs-4">
+                            <button class="btn btn-primary btn-block btn-flat" th:text="#{label.login}"
+                                    type="submit">LogIn
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert alert-danger alert-dismissable"
+                                 th:if="${param.error}">
+                                <p>
+                                    <i class="icon fa fa-ban"></i> <span
+                                        th:text="#{error.login_failed}">Invalid Email and Password.</span>
+                                </p>
+                            </div>
+                            <div class="alert alert-info alert-dismissable"
+                                 th:if="${param.logout}">
+                                <p>
+                                    <i class="icon fa fa-info"></i> <span
+                                        th:text="#{info.logout_success}">You have been logged out.</span>
+                                </p>
+                            </div>
+
+                            <div class="alert alert-warning alert-dismissable"
+                                 th:if="${msg!=null}">
+                                <p>
+                                    <i class="icon fa fa-warning"></i> <span th:text="${msg}"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

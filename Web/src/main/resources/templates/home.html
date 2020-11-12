@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragment/block :: headerFragment"></head>
+
+<header th:insert="fragment/header :: header(barnav)"></header>
+
+
+<body>
+
+<div class="container" style="height: 90%">
+    <div class="card" style="height: 100%">
+        <div class="panel-heading">
+            <H1>HOME PAGE</H1>
+        </div>
+        <div class="panel-body" style="padding-top: 20px">
+            Bienvenue sur le site de la bibliothèque
+        </div>
+
+
+    </div>
+
+</div>
+</body>
+<footer th:insert="fragment/footer :: footer"></footer>
+</html>
