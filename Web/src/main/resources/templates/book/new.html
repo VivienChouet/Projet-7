@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragment/block :: headerFragment"></head>
+
+<header th:insert="fragment/header :: header(barnav)"></header>
+
+<body>
+<div class="row" style="justify-content: center;padding-top: 5px">
+    <div class="container">
+        <div class="card col-10" style="padding: 0">
+            <div class="card-header">
+                <h1>Création d'un nouveau livre</h1>
+            </div>
+            <form method="post" th:action="@{/book/new}" th:object="${book}">
+                <div class="card-panel">
+                    <div class="row" style="justify-content: space-around">
+                        <div class="form-group has-feedback" th:class="${#fields.hasErrors('title')}? has-error">
+                            <label>Nom du Livre :</label>
+                            <input class="form-control" id="title" placeholder="title" th:field="*{title}">
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            <span class="text-danger" th:errors="*{title}"
+                                  th:if="${#fields.hasErrors('title')}"></span>
+                        </div>
+
+                        <div class="form-group has-feedback" th:class="${#fields.hasErrors('author')}? has-error">
+                            <label>Autheur :</label>
+                            <input class="form-control" id="author" placeholder="author" th:field="*{author}">
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            <span class="text-danger" th:errors="*{author}"
+                                  th:if="${#fields.hasErrors('author')}"></span>
+
+                        </div>
+                        <div class="form-group has-feedback" th:class="${#fields.hasErrors('publication')}? has-error">
+                            <label>Date de publication :</label>
+                            <input class="form-control" id="date" placeholder="Date de publication" type="date"
+                                   th:field="*{publication}">
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            <span class="text-danger" th:errors="*{publication}"
+                                  th:if="${#fields.hasErrors('publication')}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="justify-content: center ; align-content: center">
+                    <div class="form-group has-feedback" th:class="${#fields.hasErrors('resume')}? has-error">
+                        <label>Resumé :</label>
+                        <input class="form-control" id="resume" placeholder="résumé"
+                               th:field="*{resume}">
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <span class="text-danger" th:errors="*{resume}"
+                              th:if="${#fields.hasErrors('resume')}"></span>
+                    </div>
+                </div>
+
+
+                <div class="row" style="padding-top: 20px; justify-content: center; align-content: center">
+                    <div class="form-group col-xs-offset-8 col-xs-4">
+                        <button class="btn btn-primary btn-block btn-flat" type="submit">Enregistrer
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+<footer th:insert="fragment/footer :: footer"></footer>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragment/block :: headerFragment"></head>
+
+<header th:insert="fragment/header :: header(barnav)"></header>
+
+<body>
+<div class="row" style="justify-content: center;padding-top: 5px">
+    <div class="container">
+        <div class="card col-10" style="padding: 0">
+            <div class="card-header">
+                <h1>Création d'un nouvel exemplaire</h1>
+            </div>
+            <form method="post" th:action="@{/exemplaire/new}" th:object="${exemplaire}">
+                <div class="card-panel">
+                    <div class="row" style="justify-content: space-around">
+                        <div class="form-group has-feedback" th:class="${#fields.hasErrors('edition')}? has-error">
+                            <label>Nom de l'edition :</label>
+                            <input class="form-control" id="title" placeholder="title" th:field="*{edition}">
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            <span class="text-danger" th:errors="*{edition}"
+                                  th:if="${#fields.hasErrors('title')}"></span>
+                        </div>
+
+
+                <div class="row" style="padding-top: 20px; justify-content: center; align-content: center">
+                    <div class="form-group col-xs-offset-8 col-xs-4">
+                        <button class="btn btn-primary btn-block btn-flat" type="submit">Enregistrer
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+<footer th:insert="fragment/footer :: footer"></footer>
+</html>

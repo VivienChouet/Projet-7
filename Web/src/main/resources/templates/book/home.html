@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragment/block :: headerFragment"></head>
+
+<header th:insert="fragment/header :: header(barnav)"></header>
+<div class="row" style="padding-top:5px;justify-content: center ">
+    <div class="container col-10">
+        <div class="card col-10" style="margin: auto ; padding: 0">
+            <div class="panel-body">
+                <table class="table">
+                    <thread>
+                        <tr>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Date de publication</th>
+                            <th scope="col">Résumé</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                    <tr th:each="book : ${books}">
+                        <td th:text="${book.title}"></td>
+                        <td th:text="${book.author}"></td>
+                        <td th:text="${book.publication}"></td>
+                        <td th:text="${book.resume}"></td>
+                        <td> <a th:href="@{/book/{id}(id=${book.id})}">Plus d'infos</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:insert="fragment/footer :: footer"></footer>
+</html>
