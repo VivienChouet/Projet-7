@@ -1,5 +1,7 @@
 package com.bibliotheque.API.Service;
 
+import com.bibliotheque.API.Entity.Book;
+import com.bibliotheque.API.Entity.Dto.NewExemplaireDTO;
 import com.bibliotheque.API.Entity.Exemplaire;
 import com.bibliotheque.API.Repository.ExemplaireRepository;
 import com.bibliotheque.API.Utility.LoggingController;
@@ -16,6 +18,9 @@ public class ExemplaireService {
     @Autowired
     ExemplaireRepository exemplaireRepository;
 
+    @Autowired
+            BookService bookService;
+
     Logger logger = LoggerFactory.getLogger(LoggingController.class);
 
     public List<Exemplaire> findAll() {
@@ -30,8 +35,12 @@ public class ExemplaireService {
         return exemplaire;
     }
 
-    public void save(Exemplaire exemplaire) {
-        logger.info("save new exemplaire = " + exemplaire.id);
+    public void save(NewExemplaireDTO newExemplaireDTO) {
+        logger.info("save new exemplaire = ");
+        Exemplaire exemplaire = new Exemplaire();
+        Book book = bookService.findById(newExemplaireDTO.getIdBook());
+        exemplaire.setBook(book);
+        exemplaire.setEdition(newExemplaireDTO.getEdition());
         exemplaireRepository.save(exemplaire);
     }
 

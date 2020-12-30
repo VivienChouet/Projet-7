@@ -13,15 +13,16 @@
             <div class="card-header">
                 <h1>Création d'un nouvel exemplaire</h1>
             </div>
-            <form method="post" th:action="@{/exemplaire/new}" th:object="${exemplaire}">
+            <form method="post" th:action="@{/exemplaire/new/{id}(id=${exemplaire.idBook})}" th:object="${exemplaire}">
                 <div class="card-panel">
+
                     <div class="row" style="justify-content: space-around">
                         <div class="form-group has-feedback" th:class="${#fields.hasErrors('edition')}? has-error">
                             <label>Nom de l'edition :</label>
                             <input class="form-control" id="title" placeholder="title" th:field="*{edition}">
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                             <span class="text-danger" th:errors="*{edition}"
-                                  th:if="${#fields.hasErrors('title')}"></span>
+                                  th:if="${#fields.hasErrors('edition')}"></span>
                         </div>
 
 

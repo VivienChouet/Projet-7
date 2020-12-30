@@ -70,14 +70,16 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String pwd) {
+    public User login(@RequestParam String username, @RequestParam String pwd) {
 
         if (userService.loginUser(username, pwd) == true) {
             String token = createJWT(username, 60000);
             User user = new User();
             user.setName(username);
             user.setToken(token);
-            return user.getToken();
+            System.out.println(user.getToken());
+            return user;
+
         }
         return null;
     }

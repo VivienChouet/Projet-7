@@ -1,7 +1,9 @@
 package com.bibliotheque.Web.Controller;
 
 import com.bibliotheque.Web.Entity.Dto.ExemplaireDTO;
+import com.bibliotheque.Web.Entity.Dto.NewExemplaireDTO;
 import com.bibliotheque.Web.service.ExemplaireService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
@@ -15,18 +17,20 @@ public class ExemplaireController {
     @Autowired
     ExemplaireService exemplaireService;
 
-    @GetMapping("/")
-    public String newExemplaire(Model model){
-        ExemplaireDTO exemplaireDTO = new ExemplaireDTO();
-        model.addAttribute("exemplaire", exemplaireDTO);
+    @GetMapping("/new/{id}")
+    public String newExemplaire(@PathVariable int id,  Model model){
+        NewExemplaireDTO newExemplaireDTO = new NewExemplaireDTO();
+        newExemplaireDTO.setIdBook(id);
+        model.addAttribute("exemplaire", newExemplaireDTO);
 
         return "exemplaire/new";
     }
 
-    @PostMapping("/")
-    public String newExemplaire (@ModelAttribute ExemplaireDTO exemplaireDTO,@PathVariable int id, Model model){
-        model.addAttribute("exemplaire", exemplaireDTO);
-        exemplaireService.save(exemplaireDTO,id);
+ @PostMapping("/new/{id}")
+    public String newExemplaire (@ModelAttribute NewExemplaireDTO newExemplaireDTO, @PathVariable int id, Model model) throws JsonProcessingException {
+        model.addAttribute("exemplaire", newExemplaireDTO);
+        newExemplaireDTO.setIdBook(id);
+        exemplaireService.save(newExemplaireDTO);
 
         return "home";
     }

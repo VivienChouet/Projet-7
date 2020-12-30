@@ -23,7 +23,7 @@ public class BookController {
     @Autowired
     ExemplaireService exemplaireService;
 
-   @GetMapping(value = "/")
+  @GetMapping(value = "/")
     public String homeBook (Model model) throws IOException, InterruptedException {
 
        List<BookDTO> books = bookService.listBook();
@@ -55,7 +55,12 @@ public class BookController {
         BookDTO bookDTO = bookService.findById(id);
         List<ExemplaireDTO> exemplaireDTOS = exemplaireService.listExemplaireByIdBook(id);
         model.addAttribute("book",bookDTO);
-        model.addAttribute("exemplaires",exemplaireDTOS);
+        if(exemplaireDTOS.isEmpty()) {
+            return "book/ide";
+        }
+        model.addAttribute("exemplaires", exemplaireDTOS);
         return "book/id";
+
+
     }
 }

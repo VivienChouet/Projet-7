@@ -2,6 +2,7 @@ package com.bibliotheque.API.Controller;
 
 
 import com.bibliotheque.API.Entity.Dto.ExemplaireDTO;
+import com.bibliotheque.API.Entity.Dto.NewExemplaireDTO;
 import com.bibliotheque.API.Entity.Exemplaire;
 import com.bibliotheque.API.Entity.Mapper.ExemplaireMapper;
 import com.bibliotheque.API.Repository.ExemplaireRepository;
@@ -23,6 +24,8 @@ public class ExemplaireController {
     @Autowired
     ExemplaireMapper exemplaireMapper;
 
+
+
     @GetMapping("/")
     public ResponseEntity<List<ExemplaireDTO>> lsitExemplaire (){
         List<Exemplaire> exemplaires = this.exemplaireService.findAll();
@@ -38,8 +41,8 @@ public class ExemplaireController {
     }
 
     @PostMapping("/")
-    public  ResponseEntity<ExemplaireDTO> newExemplaire (@RequestBody ExemplaireDTO exemplaireDTO){
-        exemplaireService.save(exemplaireMapper.toEntity(exemplaireDTO));
+    public  ResponseEntity<ExemplaireDTO> newExemplaire (@RequestBody NewExemplaireDTO newExemplaireDTO){
+        exemplaireService.save(newExemplaireDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -50,8 +53,8 @@ public class ExemplaireController {
     }
 
     @PutMapping("/")
-    public ResponseEntity<ExemplaireDTO> updateExemplaire (@RequestBody ExemplaireDTO exemplaireDTO){
-        exemplaireService.save(exemplaireMapper.toEntity(exemplaireDTO));
+    public ResponseEntity<ExemplaireDTO> updateExemplaire (@RequestBody NewExemplaireDTO newExemplaireDTO){
+        exemplaireService.save(newExemplaireDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

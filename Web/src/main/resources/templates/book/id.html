@@ -40,23 +40,42 @@
     <div class="container col-10">
         <div class="card" style="margin-top: 20px; margin-left: auto; margin-right: auto ; padding: 0">
             <div class="card-header">
-                <h1> Liste des exemplaire</h1>
+                <h1> Liste des exemplaire disponible</h1>
             </div>
             <div class="panel-body">
                 <table class="table">
                     <thread>
                         <tr>
                             <th scope="col">Edition</th>
+                            <th scope="col">Reservation</th>
+                            <th scope="col">Reservation</th>
                         </tr>
                     </thread>
                     <tbody>
                     <tr th:each="exemplaire : ${exemplaires}">
                         <td th:text="${exemplaire.edition}"></td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reservation"
+                                    th:href="@{/reservation/{id}(id=${exemplaire.id})}">
+                                Reserver
+                            </button>
+                        </td>
+                        <td>
+                            <a th:href="@{/reservation/{id}(id=${exemplaire.id})}">Reserver</a></td>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="row" style="padding-top: 20px; justify-content: center; align-content: center">
+    <div class="form-group col-xs-offset-8 col-xs-4">
+        <a class="btn btn-primary btn-block btn-flat" role="button" th:href="@{/exemplaire/new/{id}(id=${book.id})}">Ajouter
+            une édition
+        </a>
     </div>
 </div>
 <footer th:insert="fragment/footer :: footer"></footer>

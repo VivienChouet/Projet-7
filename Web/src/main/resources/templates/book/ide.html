@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragment/block :: headerFragment"></head>
+
+<header th:insert="fragment/header :: header(barnav)"></header>
+
+
+<div class="container" style="height: 90%">
+    <div class="row" style="justify-content: center">
+        <div class="col-10">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h1 th:text="*{book.title}"></h1>
+                </div>
+                <div class="row" style="justify-content: center">
+                    <div class="col-sm-4" style="margin-top: 10px; margin-bottom: 10px ">
+                        <div class="panel-body">
+                            <div class="card text-center">
+                                <div class="card-header"><H3>Autheur</H3></div>
+                                <p class="card-text" th:text="*{book.author}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4" style="margin-top: 10px; margin-bottom: 10px ">
+                        <div class="card text-center">
+                            <div class="card-header"><h3>Resumé</h3></div>
+                            <p class="card-text" th:text="*{book.resume}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row" style="padding-top: 20px; justify-content: center; align-content: center">
+    <div class="form-group col-xs-offset-8 col-xs-4">
+        <a class="btn btn-primary btn-block btn-flat" role="button" th:href="@{/exemplaire/new/{id}(id=${book.id})}">Ajouter
+            une édition
+        </a>
+    </div>
+</div>
+
+<footer th:insert="fragment/footer :: footer"></footer>
+</html>
