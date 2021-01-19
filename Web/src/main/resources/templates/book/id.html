@@ -61,7 +61,10 @@
                             </button>
                         </td>
                         <td>
-                            <a th:href="@{/reservation/{id}(id=${exemplaire.id})}">Reserver</a></td>
+                            <form method="post" th:action="@{/reservation/{id}(id=${exemplaire.id})}">
+                                <button class="btn btn-primary btn-block btn-flat" type="submit">Reservation
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     </tbody>

@@ -74,7 +74,7 @@ public class OperateurDiamant<T> {
         HttpResponse response = null;
 
         try {
-            httpClient.send(requestPost, HttpResponse.BodyHandlers.ofString());
+            response = httpClient.send(requestPost, HttpResponse.BodyHandlers.ofString());
             System.out.println("Body    : " + json );
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();

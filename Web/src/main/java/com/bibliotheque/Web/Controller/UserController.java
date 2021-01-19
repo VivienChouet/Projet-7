@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
 
 @Controller
 @RequestMapping("/user")
-public class LogginController {
+public class UserController {
 
     @Autowired
     UserService userService;
@@ -41,6 +40,12 @@ public class LogginController {
 
     model.addAttribute("user", user);
         return "user/info";
+    }
+
+    @GetMapping("/logout")
+    public String logout(){
+        userService.logout();
+        return "home";
     }
 
 

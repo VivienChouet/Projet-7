@@ -15,6 +15,7 @@ public class Reservation {
     public int id;
     public Date date_debut;
     public Date date_fin;
+    public boolean available;
 
     @ManyToOne
     private User user;

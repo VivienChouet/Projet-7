@@ -2,6 +2,7 @@ package com.bibliotheque.API.Controller;
 
 
 
+import com.bibliotheque.API.Entity.Dto.NewReservationDTO;
 import com.bibliotheque.API.Entity.Dto.ReservationDTO;
 import com.bibliotheque.API.Entity.Mapper.ReservationMapper;
 import com.bibliotheque.API.Entity.Reservation;
@@ -41,10 +42,10 @@ public class ReservationController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<ReservationDTO> newReservation (@RequestBody ReservationDTO reservationDTO) {
-        System.out.println("book => " + reservationMapper.toEntity(reservationDTO));
-        reservationService.save(reservationMapper.toEntity(reservationDTO));
-        return new ResponseEntity<>(reservationDTO, HttpStatus.OK);
+    public ResponseEntity<ReservationDTO> newReservation (@RequestBody NewReservationDTO newReservationDTO) {
+        System.out.println("reservation id => " + newReservationDTO.id);
+        reservationService.save(newReservationDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/")
@@ -61,5 +62,11 @@ public class ReservationController {
     public ResponseEntity<ReservationDTO> deleteReservation (@PathVariable int id){
         reservationService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/myreservation")
+    public ResponseEntity<List<ReservationDTO>> reservationByUser (@RequestHeader("Authorization") String token){
+        List<Reservation> reservations = this.reservationService.findByUser(token);
+        return new ResponseEntity<>(reservationMapper.toDto(reservations), HttpStatus.OK);
     }
 }

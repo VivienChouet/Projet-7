@@ -72,7 +72,7 @@ public class UserController {
     @PostMapping("/login")
     public User login(@RequestParam String username, @RequestParam String pwd) {
 
-        if (userService.loginUser(username, pwd) == true) {
+        if (userService.loginUser(username, pwd)) {
             String token = createJWT(username, 60000);
             User user = new User();
             user.setName(username);
@@ -86,19 +86,16 @@ public class UserController {
 
 
     @GetMapping("/token")
-    public ResponseEntity<UserDTO> userToken(@RequestParam String token) {
+    public ResponseEntity<UserDTO> userToken(@RequestHeader("Authorization") String token) {
         System.out.println(token);
         if (token != null) {
-            User user = userService.findByUsername(getIdJWTToken(token));
+            String username = getIdJWTToken(token);
+            User user = userService.findByUsername(username);
             return new ResponseEntity<>(userMapper.toDto(user), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/myusername")
-    public String currentUserName() {
-        return "test";
-    }
 
     public static String createJWT(String username, long ttlMillis) {
 
@@ -140,8 +137,8 @@ public class UserController {
 
 
     private String getIdJWTToken(String token) {
-
-        String username = decodeJWT(token).getSubject();
+        String jwtToken = token.replace("Bearer ", "");
+        String username = decodeJWT(jwtToken).getSubject();
 
         return username;
 

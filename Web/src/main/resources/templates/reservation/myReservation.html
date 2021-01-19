@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragment/block :: headerFragment"></head>
+
+<header th:insert="fragment/header :: header(barnav)"></header>
+
+<div class="row">
+    <div class="container col-10">
+        <div class="card" style="margin-top: 20px; margin-left: auto; margin-right: auto ; padding: 0">
+            <div class="card-header">
+                <h1> Liste de mes réservations en cours</h1>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thread>
+                        <tr>
+                            <th scope="col">book</th>
+                            <th scope="col">user</th>
+                            <th scope="col">exemplaire</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                    <tr th:each="reservation : ${reservations}">
+                        <td th:text="${reservation.getExemplaire()}"></td>
+                        <td th:text="${reservation.getUser()}">
+                        </td>
+                        <td>
+                            <a>test</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="padding-top: 20px; justify-content: center; align-content: center">
+    <div class="form-group col-xs-offset-8 col-xs-4">
+        <a class="btn btn-primary btn-block btn-flat" role="button" th:href="@{/exemplaire/new/{id}(id=${book.id})}">Ajouter
+            une édition
+        </a>
+    </div>
+</div>
+<footer th:insert="fragment/footer :: footer"></footer>
+</html>

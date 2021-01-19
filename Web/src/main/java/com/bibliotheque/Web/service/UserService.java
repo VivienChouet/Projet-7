@@ -16,8 +16,8 @@ import java.net.http.HttpResponse;
 @Service
 public class UserService {
 
-    HttpClient httpClient = HttpClient.newBuilder().build();
-
+    @Autowired
+        OperateurDiamant operateurDiamant;
    Logger logger = LoggerFactory.getLogger(LoggingController.class);
 
     String token;
@@ -25,11 +25,9 @@ public class UserService {
     public void connexion(UserDTO userDTO) throws JsonProcessingException {
         logger.info("connexion de : " + userDTO.name );
 
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/user/login?username=" + userDTO.name + "&pwd=" + userDTO.password)).setHeader("Content-Type" , "application/json").POST(HttpRequest.BodyPublishers.ofString("")).build();
-        HttpResponse response = null;
-        //HttpResponse response = operateurDiamant.post("http://localhost:8080/user/login?username=" + userDTO.name + "&pwd=" + userDTO.password, "vide");
+        HttpResponse response = operateurDiamant.post("http://localhost:8080/user/login?username=" + userDTO.name + "&pwd=" + userDTO.password, "vide");
 
-        UserDTO userDTO1 = (UserDTO) operateurDiamant.singleObject(response,UserDTO.class);
+       UserDTO userDTO1 = (UserDTO) operateurDiamant.singleObject(response,UserDTO.class);
        token = userDTO1.getToken();
        logger.info(token);
     }
@@ -41,6 +39,24 @@ public class UserService {
 
         return userDTO;
     }
+
+    public UserDTO connectedUser() throws JsonProcessingException {
+        HttpResponse response = operateurDiamant.RequestSecure("http://localhost:8080/user/token", token);
+        UserDTO user = (UserDTO) operateurDiamant.singleObject(response, UserDTO.class);
+        return user;
+    }
+
+    public void logout(){
+        token = null;
+    }
+
+    public boolean token(){
+        if (token != null) {
+            return true;
+        }
+        return false;
+    }
+
 
 
 }
