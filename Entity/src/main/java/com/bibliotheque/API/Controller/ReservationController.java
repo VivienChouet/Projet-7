@@ -48,7 +48,7 @@ public class ReservationController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public ResponseEntity<ReservationDTO> updateReservation (@PathVariable int id){
         Reservation reservation = this.reservationService.findById(id);
         if(reservation == null )
@@ -69,4 +69,21 @@ public class ReservationController {
         List<Reservation> reservations = this.reservationService.findByUser(token);
         return new ResponseEntity<>(reservationMapper.toDto(reservations), HttpStatus.OK);
     }
+
+    @PostMapping("/extension/{id}")
+    public ResponseEntity<ReservationDTO> extension (@PathVariable int id){
+        Reservation reservation = this.reservationService.findById(id);
+        if (reservation.extension){
+            reservationService.extension(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @PostMapping("/return/{id}")
+    public ResponseEntity<ReservationDTO> endReservation (@PathVariable int id){
+        reservationService.endReservation(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

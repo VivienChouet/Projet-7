@@ -10,6 +10,7 @@ public class ExemplaireDTO {
 
     public int id;
     public String edition;
+    public boolean available;
 
 
     private Book book;

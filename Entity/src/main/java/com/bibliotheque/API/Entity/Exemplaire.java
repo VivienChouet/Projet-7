@@ -13,6 +13,7 @@ public class Exemplaire {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
     public String edition;
+    public boolean available;
 
     @ManyToOne
     private Book book;
