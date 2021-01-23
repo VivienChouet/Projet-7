@@ -28,16 +28,17 @@
                             <th scope="col">book</th>
                             <th scope="col">user</th>
                             <th scope="col">exemplaire</th>
+                            <th scope="col">date de début</th>
+                            <th scope="col">date de fin</th>
                         </tr>
                     </thread>
                     <tbody>
                     <tr th:each="reservation : ${reservations}">
-                        <td th:text="${reservation.getExemplaire()}"></td>
-                        <td th:text="${reservation.getUser()}">
-                        </td>
-                        <td>
-                            <a>test</a>
-                        </td>
+                        <td th:text="${reservation.exemplaire.book.title}"></td>
+                        <td th:text="${reservation.user.name}"></td>
+                        <td th:text="${reservation.exemplaire.edition}"></td>
+                        <td th:text="${reservation.date_debut}"></td>
+                        <td th:text="${reservation.date_fin}"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -46,12 +47,6 @@
     </div>
 </div>
 
-<div class="row" style="padding-top: 20px; justify-content: center; align-content: center">
-    <div class="form-group col-xs-offset-8 col-xs-4">
-        <a class="btn btn-primary btn-block btn-flat" role="button" th:href="@{/exemplaire/new/{id}(id=${book.id})}">Ajouter
-            une édition
-        </a>
-    </div>
 </div>
 <footer th:insert="fragment/footer :: footer"></footer>
 </html>

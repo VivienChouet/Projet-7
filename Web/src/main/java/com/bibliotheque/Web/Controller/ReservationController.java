@@ -24,20 +24,26 @@ public class ReservationController {
     @Autowired
     UserService userService;
 
- @PostMapping("/{id}")
-    public String newReservation (@PathVariable int id, Model model) throws JsonProcessingException {
-
-            System.out.println("est ce que ca Save ?????????");
-            reservationService.newReservation(id);
-            return "home";
-
+    @PostMapping("/{id}")
+    public String newReservation(@PathVariable int id, Model model) throws JsonProcessingException {
+        System.out.println("est ce que ca Save ?????????");
+        reservationService.newReservation(id);
+        return "home";
     }
 
     @GetMapping("/myreservation")
-    public String myReservation (Model model) throws JsonProcessingException {
+    public String myReservation(Model model) throws JsonProcessingException {
         List<ReservationDTO> reservations = this.reservationService.reservationByUser();
-     model.addAttribute("reservations", reservations);
-     return "reservation/myReservation";
+        model.addAttribute("reservations", reservations);
+        return "reservation/myReservation";
     }
+
+    @PostMapping("/extension/{id}")
+    public String extension (@PathVariable int id, Model model){
+
+        return "home";
+    }
+
+
 
 }

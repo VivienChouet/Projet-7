@@ -41,6 +41,7 @@ public class ExemplaireService {
         Book book = bookService.findById(newExemplaireDTO.getIdBook());
         exemplaire.setBook(book);
         exemplaire.setEdition(newExemplaireDTO.getEdition());
+        exemplaire.setAvailable(true);
         exemplaireRepository.save(exemplaire);
     }
 

@@ -35,7 +35,8 @@ public class ReservationService {
     }
 
     public List<ReservationDTO> reservationByUser() throws JsonProcessingException {
-        HttpResponse response = operateurDiamant.RequestSecure("http://localhost:8080/myreservation/", userService.token);
+        System.out.println("TOKEN = " + userService.token);
+        HttpResponse response = operateurDiamant.RequestSecure("http://localhost:8080/reservation/myreservation", userService.token);
         List<ReservationDTO> reservations = operateurDiamant.listObject(response,ReservationDTO.class);
         return reservations;
     }
