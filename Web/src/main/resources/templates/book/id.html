@@ -48,19 +48,12 @@
                         <tr>
                             <th scope="col">Edition</th>
                             <th scope="col">Reservation</th>
-                            <th scope="col">Reservation</th>
                         </tr>
                     </thread>
                     <tbody>
                     <tr th:each="exemplaire : ${exemplaires}">
                         <td th:text="${exemplaire.edition}"></td>
-                        <td>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reservation"
-                                    th:href="@{/reservation/{id}(id=${exemplaire.id})}">
-                                Reserver
-                            </button>
-                        </td>
-                        <td>
+                        <td th:if="${exemplaire.available} == false">
                             <form method="post" th:action="@{/reservation/{id}(id=${exemplaire.id})}">
                                 <button class="btn btn-primary btn-block btn-flat" type="submit">Reservation
                                 </button>

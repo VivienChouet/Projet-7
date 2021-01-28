@@ -43,6 +43,8 @@ public class ReservationService {
     }
 
 
+
+
     public Reservation findById(int id) {
         logger.info("Reservation Id = " + id);
         Reservation reservation = this.reservationRepository.findById(id).get();
@@ -83,11 +85,12 @@ public class ReservationService {
         String username = userService.findUsernameByToken(token);
         User user = userService.findByUsername(username);
         logger.info("find reservation by user = " + user.name);
-        List<Reservation> reservations = reservationRepository.findByUser_Id(user.getId());
+        List<Reservation> reservations = reservationRepository.findByUser_IdAndEnded(user.getId(),false);
         return reservations;
     }
 
     public void endReservation (int id){
+        logger.info("ended reservation " + id);
         Reservation reservation = reservationRepository.findById(id).get();
         reservation.setEnded(true);
         reservationRepository.save(reservation);

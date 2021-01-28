@@ -40,10 +40,15 @@ public class ReservationController {
 
     @PostMapping("/extension/{id}")
     public String extension (@PathVariable int id, Model model){
-
+reservationService.extension(id);
         return "home";
     }
 
+    @PostMapping("/end/{id}")
+    public String endedReservation (@PathVariable int id) throws JsonProcessingException {
+    reservationService.endedReservation(id);
+        return "home";
+    }
 
 
 }

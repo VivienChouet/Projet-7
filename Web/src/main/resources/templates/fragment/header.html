@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -42,8 +43,9 @@
                         Mon Compte
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount">
-                        <a class="dropdown-item" href="/user/connexion">Connexion</a>
+                        <a class="dropdown-item" href="/user/connexion">Connection</a>
                         <a class="dropdown-item" href="/user/new">Créer un Compte</a>
+                        <a sec:authorize="isAuthenticated()"class="dropdown-item" href="/user/logout">Déconnection</a>
                     </div>
                 </li>
             </ul>

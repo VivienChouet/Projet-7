@@ -39,6 +39,18 @@
                         <td th:text="${reservation.exemplaire.edition}"></td>
                         <td th:text="${reservation.date_debut}"></td>
                         <td th:text="${reservation.date_fin}"></td>
+                        <td th:if="${reservation.extension} == false">
+                            <form method="post" th:action="@{/reservation/extension/{id}(id=${reservation.id})}">
+                                <button class="btn btn-primary btn-block btn-flat" type="submit">Extension
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" th:action="@{/reservation/end/{id}(id=${reservation.id})}">
+                                <button class="btn btn-primary btn-block btn-flat" type="submit">Terminé
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

@@ -73,11 +73,12 @@ public class ReservationController {
     @PostMapping("/extension/{id}")
     public ResponseEntity<ReservationDTO> extension (@PathVariable int id){
         Reservation reservation = this.reservationService.findById(id);
-        if (reservation.extension){
+if (reservation.extension){
+    return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+}
             reservationService.extension(id);
             return new ResponseEntity<>(HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+
     }
 
     @PostMapping("/return/{id}")
