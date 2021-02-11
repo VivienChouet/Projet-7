@@ -1,7 +1,6 @@
 package com.bibliotheque.API.Entity.Dto;
 
 import com.bibliotheque.API.Entity.Exemplaire;
-import com.bibliotheque.API.Entity.User;
 import lombok.Data;
 
 import java.util.Date;

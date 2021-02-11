@@ -60,4 +60,11 @@ public class ReservationService {
        operateurDiamant.post("http://localhost:8080/reservation/return/" + id, "vide");
     }
 
+    public List<ReservationDTO> listReservation() throws JsonProcessingException {
+        HttpResponse response = operateurDiamant.Request("http://localhost:8080/reservation/");
+        List<ReservationDTO> reservationDTOS = operateurDiamant.listObject(response, ReservationDTO.class);
+
+        return reservationDTOS;
+    }
+
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragment/block :: headerFragment"></head>
+
+<header th:insert="fragment/header :: header(barnav)"></header>
+<div class="row" style="padding-top:5px;justify-content: center ">
+    <div class="container col-10">
+        <div class="card col-10" style="margin: auto ; padding: 0">
+            <div class="panel-body">
+                <table class="table">
+                    <thread>
+                        <tr>
+                            <th scope="col">Usernam</th>
+                            <th scope="col">email</th>
+                            <th scope="col">admin</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.admin}"></td>
+                        <td th:if="${user.admin} == true">
+                            <form method="post" th:action="@{/admin/{id}(id=${user.id})}">
+                                <button class="btn btn-primary btn-block btn-flat" type="submit">Ajout Admin
+                                </button>
+                            </form>
+                        </td>
+                        <td th:if="${user.admin} == false">
+                            <form method="post" th:action="@{/admin/{id}(id=${user.id})}">
+                                <button class="btn btn-primary btn-block btn-flat" type="submit">Retrait Admin
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:insert="fragment/footer :: footer"></footer>
+</html>

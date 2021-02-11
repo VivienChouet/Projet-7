@@ -35,7 +35,17 @@
             </ul>
             <ul class="navbar-nav mr-auto" style="justify-content:flex-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="/reservation/myreservation">Mes Reservations</a>
+                    <a th:if="*{connected == true}" class="nav-link" href="/reservation/myreservation">Mes Reservations</a>
+                </li>
+                <li th:if="*{admin == true }" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/" id="navbarDropdownAdmin" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Espace Admin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount">
+                        <a class="dropdown-item" href="/admin/reservation">Liste reservations</a>
+                        <a class="dropdown-item" href="/admin/">Liste user</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="/" id="navbarDropdownAccount" role="button"
@@ -43,9 +53,9 @@
                         Mon Compte
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount">
-                        <a class="dropdown-item" href="/user/connexion">Connection</a>
-                        <a class="dropdown-item" href="/user/new">Créer un Compte</a>
-                        <a sec:authorize="isAuthenticated()"class="dropdown-item" href="/user/logout">Déconnection</a>
+                        <a th:if="*{connected == false}" class="dropdown-item" href="/user/connexion">Connection</a>
+                        <a th:if="*{connected == false}" class="dropdown-item" href="/user/register">Créer un Compte</a>
+                        <a th:if="*{connected == true}" class="dropdown-item" href="/user/logout">Déconnection</a>
                     </div>
                 </li>
             </ul>

@@ -53,7 +53,7 @@
                     <tbody>
                     <tr th:each="exemplaire : ${exemplaires}">
                         <td th:text="${exemplaire.edition}"></td>
-                        <td th:if="${exemplaire.available} == false">
+                        <td th:if="${exemplaire.available} == true">
                             <form method="post" th:action="@{/reservation/{id}(id=${exemplaire.id})}">
                                 <button class="btn btn-primary btn-block btn-flat" type="submit">Reservation
                                 </button>

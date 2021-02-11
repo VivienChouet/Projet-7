@@ -1,7 +1,7 @@
 package com.bibliotheque.API.Service;
 
-import com.bibliotheque.API.Repository.UserRepository;
 import com.bibliotheque.API.Entity.User;
+import com.bibliotheque.API.Repository.UserRepository;
 import com.bibliotheque.API.Utility.LoggingController;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -20,34 +21,64 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/connexion")
-    public String logginForm(Model model) {
+    public String logginForm(Model model) throws JsonProcessingException {
         UserDTO user = new UserDTO();
         model.addAttribute("pageTitle", "Connexion");
         model.addAttribute("user", user);
+        boolean connected = this.userService.connected();
+        boolean admin = this.userService.admin();
+        model.addAttribute("connected", connected);
+        model.addAttribute("admin", admin);
         return "user/connexion";
     }
 
     @PostMapping("/connexion")
-    public String loggin(UserDTO userDTO,Model model) throws JsonProcessingException {
+    public ModelAndView loggin(UserDTO userDTO, Model model) throws JsonProcessingException {
         model.addAttribute("user", userDTO);
         userService.connexion(userDTO);
-        return "home";
+        boolean connected = this.userService.connected();
+        boolean admin = this.userService.admin();
+        model.addAttribute("connected", connected);
+        model.addAttribute("admin", admin);
+        return new ModelAndView("redirect:/");
     }
 
     @GetMapping("/{id}")
     public String User(@PathVariable int id, Model model) throws JsonProcessingException {
     UserDTO user = userService.idUser(id);
-
     model.addAttribute("user", user);
+        boolean connected = this.userService.connected();
+        boolean admin = this.userService.admin();
+        model.addAttribute("connected", connected);
+        model.addAttribute("admin", admin);
         return "user/info";
     }
 
     @GetMapping("/logout")
-    public String logout(){
+    public ModelAndView logout(Model model) throws JsonProcessingException {
         userService.logout();
-        return "home";
+        boolean connected = this.userService.connected();
+        boolean admin = this.userService.admin();
+        model.addAttribute("connected", connected);
+        model.addAttribute("admin", admin);
+        return new ModelAndView("redirect:/");
     }
 
+    @GetMapping("/register")
+    public String register(Model model) throws JsonProcessingException {
+        UserDTO userDTO = new UserDTO();
+        model.addAttribute("user", userDTO);
+        boolean connected = this.userService.connected();
+        boolean admin = this.userService.admin();
+        model.addAttribute("connected", connected);
+        model.addAttribute("admin", admin);
+         return "user/register";
+    }
 
+    @PostMapping("/register")
+    public ModelAndView newUser (UserDTO userDTO) throws JsonProcessingException {
+        userService.newUser(userDTO);
+        return new ModelAndView("redirect:/");
+    }
 
 }

@@ -9,9 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.net.URI;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -22,10 +21,12 @@ public class UserService {
 
     String token;
 
+    boolean admin = false;
+
     public void connexion(UserDTO userDTO) throws JsonProcessingException {
         logger.info("connexion de : " + userDTO.name );
-
-        HttpResponse response = operateurDiamant.post("http://localhost:8080/user/login?username=" + userDTO.name + "&pwd=" + userDTO.password, "vide");
+        String json = (String) operateurDiamant.jsonConvert(userDTO);
+        HttpResponse response = operateurDiamant.post("http://localhost:8080/user/login", json);
 
        UserDTO userDTO1 = (UserDTO) operateurDiamant.singleObject(response,UserDTO.class);
        token = userDTO1.getToken();
@@ -33,7 +34,6 @@ public class UserService {
     }
 
     public UserDTO idUser(int id) throws JsonProcessingException {
-
         HttpResponse response = operateurDiamant.RequestSecure("http://localhost:8080/user/" + id, token);
         UserDTO userDTO = (UserDTO) operateurDiamant.singleObject(response, UserDTO.class);
 
@@ -46,8 +46,35 @@ public class UserService {
         return user;
     }
 
+    public List<UserDTO> listUser() throws JsonProcessingException {
+        HttpResponse response = operateurDiamant.RequestSecure("http://localhost:8080/user/", token);
+        List<UserDTO> userDTOS = operateurDiamant.listObject(response, UserDTO.class);
+        return userDTOS;
+    }
+
+    public void newUser (UserDTO userDTO) throws JsonProcessingException {
+        String json = (String) operateurDiamant.jsonConvert(userDTO);
+        HttpResponse response = operateurDiamant.post("http://localhost:8080/user/", json);
+    }
+
+    public boolean admin () throws JsonProcessingException {
+        if(token == null){return false;}
+        UserDTO userDTO = connectedUser();
+        if (userDTO.admin){
+        return true;}
+        return false;
+    }
+
+    public boolean connected()  {
+        boolean connected;
+        if(token != null){ connected = true; }
+        else {connected = false;}
+return connected;
+    }
+
     public void logout(){
         token = null;
+        admin = false;
     }
 
     public boolean token(){

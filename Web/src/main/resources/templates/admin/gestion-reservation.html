@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragment/block :: headerFragment"></head>
+
+<header th:insert="fragment/header :: header(barnav)"></header>
+<div class="row" style="padding-top:5px;justify-content: center ">
+    <div class="container col-10">
+        <div class="card col-10" style="margin: auto ; padding: 0">
+            <div class="panel-body">
+                <table class="table">
+                    <thread>
+                        <tr>
+                            <th scope="col">Username</th>
+                            <th scope="col">Book</th>
+                            <th scope="col">Edition</th>
+                            <th scope="col">Date de fin</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                    <tr th:each="reservation : ${reservations}">
+                        <td th:text="${reservation.user.name}"></td>
+                        <td th:text="${reservation.exemplaire.book.title}"></td>
+                        <td th:text="${reservation.exemplaire.edition}"></td>
+                        <td th:text="${reservation.date_fin}"></td>
+                        <td th:if="${reservation.exemplaire.available} == true">
+                            <form method="post" th:action="@{/admin/reservation/{id}(id=${reservation.id})}">
+                                <button class="btn btn-primary btn-block btn-flat" type="submit">livre rendu
+                                </button>
+                            </form>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:insert="fragment/footer :: footer"></footer>
+</html>

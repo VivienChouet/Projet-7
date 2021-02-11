@@ -19,7 +19,7 @@
     <div class="container col-10">
         <div class="card" style="margin-top: 20px; margin-left: auto; margin-right: auto ; padding: 0">
             <div class="card-header">
-                <h1> Liste de mes réservations en cours</h1>
+                <h1> Liste des réservations en cours</h1>
             </div>
             <div class="panel-body">
                 <table class="table">
@@ -40,8 +40,8 @@
                         <td th:text="${reservation.date_debut}"></td>
                         <td th:text="${reservation.date_fin}"></td>
                         <td th:if="${reservation.extension} == false">
-                            <form method="post" th:action="@{/reservation/extension/{id}(id=${reservation.id})}">
-                                <button class="btn btn-primary btn-block btn-flat" type="submit">Extension
+                            <form method="post" th:action="@{/reservation/end/{id}(id=${reservation.id})}">
+                                <button class="btn btn-primary btn-block btn-flat" type="submit">Rendu
                                 </button>
                             </form>
                         </td>

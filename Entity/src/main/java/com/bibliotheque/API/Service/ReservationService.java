@@ -1,8 +1,6 @@
 package com.bibliotheque.API.Service;
 
-import com.bibliotheque.API.Entity.Dto.ExemplaireDTO;
 import com.bibliotheque.API.Entity.Dto.NewReservationDTO;
-import com.bibliotheque.API.Entity.Dto.ReservationDTO;
 import com.bibliotheque.API.Entity.Exemplaire;
 import com.bibliotheque.API.Entity.Reservation;
 import com.bibliotheque.API.Entity.User;
@@ -16,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.DatabaseMetaData;
 import java.util.Date;
 import java.util.List;
 
@@ -56,9 +53,21 @@ public class ReservationService {
         reservationRepository.delete(findById(id));
     }
 
-    public List<Reservation> findByUser_id(int id) {
-        logger.info("User Search = " + id);
-        return reservationRepository.findByUser_id(id);
+    public void save(NewReservationDTO newReservationDTO) {
+        logger.info("new reservation");
+        Reservation reservation = new Reservation();
+        reservation.setDate_debut(newReservationDTO.date_debut);
+        reservation.setDate_fin(endReservationDate(newReservationDTO.date_debut));
+        reservation.setExemplaire(exemplaireRepository.findById(newReservationDTO.getIdexemplaire()).get());
+        reservation.setUser(userRepository.findById(newReservationDTO.getIduser()).get());
+        reservation.setEnded(false);
+        reservation.setExtension(false);
+        reservationRepository.save(reservation);
+        Exemplaire exemplaire = this.exemplaireRepository.findById(newReservationDTO.getIdexemplaire()).get();
+        exemplaire.setAvailable(false);
+        logger.info("exemplaire = " + exemplaire.edition);
+        exemplaireRepository.save(exemplaire);
+
     }
 
     public Date endReservationDate (Date date){
