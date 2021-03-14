@@ -124,3 +124,45 @@ Using generated security password: 8b469beb-6f74-47f2-bde5-edc0ecef2c0e
 2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
 2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - Batch en cours
 2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
