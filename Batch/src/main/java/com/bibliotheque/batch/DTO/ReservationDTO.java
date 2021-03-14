@@ -1,4 +1,4 @@
-package com.bibliotheque.API.Entity.Dto;
+package com.bibliotheque.batch.DTO;
 
 import lombok.Data;
 

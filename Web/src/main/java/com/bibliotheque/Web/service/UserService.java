@@ -16,21 +16,21 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-        OperateurDiamant operateurDiamant;
-   Logger logger = LoggerFactory.getLogger(LoggingController.class);
+    OperateurDiamant operateurDiamant;
+    Logger logger = LoggerFactory.getLogger(LoggingController.class);
 
     String token;
 
     boolean admin = false;
 
     public void connexion(UserDTO userDTO) throws JsonProcessingException {
-        logger.info("connexion de : " + userDTO.name );
+        logger.info("connexion de : " + userDTO.name);
         String json = (String) operateurDiamant.jsonConvert(userDTO);
         HttpResponse response = operateurDiamant.post("http://localhost:8080/user/login", json);
 
-       UserDTO userDTO1 = (UserDTO) operateurDiamant.singleObject(response,UserDTO.class);
-       token = userDTO1.getToken();
-       logger.info(token);
+        UserDTO userDTO1 = (UserDTO) operateurDiamant.singleObject(response, UserDTO.class);
+        token = userDTO1.getToken();
+        logger.info(token);
     }
 
     public UserDTO idUser(int id) throws JsonProcessingException {
@@ -52,38 +52,33 @@ public class UserService {
         return userDTOS;
     }
 
-    public void newUser (UserDTO userDTO) throws JsonProcessingException {
+    public void newUser(UserDTO userDTO) throws JsonProcessingException {
         String json = (String) operateurDiamant.jsonConvert(userDTO);
         HttpResponse response = operateurDiamant.post("http://localhost:8080/user/", json);
     }
 
-    public boolean admin () throws JsonProcessingException {
-        if(token == null){return false;}
+    public boolean admin() throws JsonProcessingException {
+        if (token == null) {
+            return false;
+        }
         UserDTO userDTO = connectedUser();
-        if (userDTO.admin){
-        return true;}
-        return false;
+        return userDTO.admin;
     }
 
-    public boolean connected()  {
+    public boolean connected() {
         boolean connected;
-        if(token != null){ connected = true; }
-        else {connected = false;}
-return connected;
+        connected = token != null;
+        return connected;
     }
 
-    public void logout(){
+    public void logout() {
         token = null;
         admin = false;
     }
 
-    public boolean token(){
-        if (token != null) {
-            return true;
-        }
-        return false;
+    public boolean token() {
+        return token != null;
     }
-
 
 
 }

@@ -11,4 +11,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
 
     List<Reservation> findByUser_IdAndEnded(int id, boolean b);
+
+    List<Reservation> findByEnded(boolean ended);
 }

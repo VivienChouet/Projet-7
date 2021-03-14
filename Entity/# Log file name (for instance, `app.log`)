@@ -1,28 +1,126 @@
-2021-02-11 [main] INFO  c.bibliotheque.API.EntityApplication - Starting EntityApplication on DESKTOP-IIRVTB3 with PID 508 (E:\Programation\Projet\Projet-7\Entity\target\classes started by vivie in E:\Programation\Projet\Projet-7\Entity)
-2021-02-11 [main] INFO  c.bibliotheque.API.EntityApplication - No active profile set, falling back to default profiles: default
-2021-02-11 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2021-02-11 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 57ms. Found 4 JPA repository interfaces.
-2021-02-11 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-2021-02-11 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2021-02-11 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.37]
-2021-02-11 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-02-11 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1013 ms
-2021-02-11 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2021-02-11 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2021-02-11 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2021-02-11 [task-1] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-02-11 [task-1] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.20.Final
-2021-02-11 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-02-11 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+2021-03-14 [main] INFO  c.bibliotheque.API.EntityApplication - Starting EntityApplication on DESKTOP-IIRVTB3 with PID 12340 (E:\Programation\Projet\Projet-7\Entity\target\classes started by vivie in E:\Programation\Projet\Projet-7\Entity)
+2021-03-14 [main] INFO  c.bibliotheque.API.EntityApplication - No active profile set, falling back to default profiles: default
+2021-03-14 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-03-14 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 60ms. Found 4 JPA repository interfaces.
+2021-03-14 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-03-14 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-03-14 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-03-14 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-03-14 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1534 ms
+2021-03-14 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-03-14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-03-14 [task-1] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-14 [task-1] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-03-14 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-14 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
 
-Using generated security password: fa64e8be-95ab-4a23-8444-3b384d8feb1c
+Using generated security password: 8b469beb-6f74-47f2-bde5-edc0ecef2c0e
 
-2021-02-11 [task-1] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2021-02-11 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@15f09ef, org.springframework.security.web.context.SecurityContextPersistenceFilter@eb0f4d, org.springframework.security.web.header.HeaderWriterFilter@1fe0ed4, org.springframework.security.web.authentication.logout.LogoutFilter@14c2cd4, com.bibliotheque.API.Utility.JWTAuthorizationFilter@66e67e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1b642b9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1844119, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1d4a80f, org.springframework.security.web.session.SessionManagementFilter@52c8c2, org.springframework.security.web.access.ExceptionTranslationFilter@119aa36, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@11d0004]
-2021-02-11 [task-1] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2021-02-11 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
-2021-02-11 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories…
-2021-02-11 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-02-11 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-02-11 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized!
-2021-02-11 [main] INFO  c.bibliotheque.API.EntityApplication - Started EntityApplication in 3.499 seconds (JVM running for 4.507)
+2021-03-14 [task-1] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-03-14 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@14180a2, org.springframework.security.web.context.SecurityContextPersistenceFilter@253c9d, org.springframework.security.web.header.HeaderWriterFilter@116e8c5, org.springframework.security.web.authentication.logout.LogoutFilter@1d3225, com.bibliotheque.API.Utility.JWTAuthorizationFilter@f0a747, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@b8d173, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1897dab, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1505815, org.springframework.security.web.session.SessionManagementFilter@15b886f, org.springframework.security.web.access.ExceptionTranslationFilter@1d44a19, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@996c99]
+2021-03-14 [task-1] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-03-14 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-03-14 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories…
+2021-03-14 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-14 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-14 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized!
+2021-03-14 [main] INFO  c.bibliotheque.API.EntityApplication - Started EntityApplication in 4.442 seconds (JVM running for 5.686)
+2021-03-14 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-14 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-03-14 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2021-03-14 [http-nio-8080-exec-1] INFO  c.b.API.Utility.LoggingController - return list book
+2021-03-14 [http-nio-8080-exec-3] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-3] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-3] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-3] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-5] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-5] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-7] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-7] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-5] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-5] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-7] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-7] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-9] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-9] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-1] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-1] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-5] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-5] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-6] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-03-14 [http-nio-8080-exec-4] INFO  c.b.API.Utility.LoggingController - batch envoyé = 3
