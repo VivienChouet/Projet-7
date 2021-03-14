@@ -52,7 +52,7 @@ public class BatchService {
 @Bean
     Step step1 () throws JsonProcessingException {
     logger.info("Lauch step1");
-    return steps.get("step1").<WrapReservationDTO, SimpleMailMessage>chunk(1)
+    return steps.get("step1").<WrapReservationDTO, SimpleMailMessage>chunk(8)
             .reader(new Reader())
             .processor(new Processor())
             .writer(new Writer(this.javaMailSender))
