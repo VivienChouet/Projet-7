@@ -25,6 +25,7 @@ public class SheduledClass {
         JobParameters jobParameters = new JobParametersBuilder()
                 .addLong("time", System.currentTimeMillis())
                 .toJobParameters();
+        System.out.println(jobParameters.toProperties());
         launcher.run(processJob, jobParameters);
     }
 }

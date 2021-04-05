@@ -2,7 +2,6 @@ package com.bibliotheque.batch.Service;
 
 import com.bibliotheque.batch.DTO.WrapReservationDTO;
 import com.bibliotheque.batch.Utility.LoggingController;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
@@ -17,7 +16,6 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
 @Configuration
@@ -40,22 +38,24 @@ public class BatchService {
 
 
 @Bean
-    public Job processJob() throws JsonProcessingException {
+    public Job processJob() {
+    logger.info("ca tourne ? ");
     return  jobs.get("processJob")
             .incrementer(new RunIdIncrementer())
             .listener(listener())
             .flow(step1())
             .end()
             .build();
+
 }
 
 @Bean
-    Step step1 () throws JsonProcessingException {
+    Step step1 (){
     logger.info("Lauch step1");
-    return steps.get("step1").<WrapReservationDTO, SimpleMailMessage>chunk(8)
+    return steps.get("step1").<WrapReservationDTO, WrapReservationDTO>chunk(1)
             .reader(new Reader())
             .processor(new Processor())
-            .writer(new Writer(this.javaMailSender))
+            .writer(new Writer())
             .build();
 }
 
@@ -64,7 +64,8 @@ public class BatchService {
     return  new JobExecutionListener() {
         @Override
         public void beforeJob(JobExecution jobExecution) {
-
+            System.out.println("Test lire l'API ici");
+        Reader reader = new Reader();
         }
 
         @Override

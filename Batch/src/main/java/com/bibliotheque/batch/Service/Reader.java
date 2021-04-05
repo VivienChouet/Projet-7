@@ -1,19 +1,38 @@
 package com.bibliotheque.batch.Service;
 
+import com.bibliotheque.batch.DTO.ReservationDTO;
 import com.bibliotheque.batch.DTO.WrapReservationDTO;
 import org.springframework.batch.item.ItemReader;
 
+import java.net.http.HttpResponse;
+import java.util.List;
+
 public class Reader implements ItemReader<WrapReservationDTO> {
+public boolean batch = false;
+
+    public Reader (){
+        System.out.println("ca marche ? " + batch);
+        batch = false;
+    }
 
     @Override
     public WrapReservationDTO read() throws Exception {
-        int a = 0;
-        WrapReservationDTO wrapReservationDTO = new WrapReservationDTO();
-        wrapReservationDTO.setReservationDTOS(ReaderAPI.reservationDTOS(ReaderAPI.httpResponse()));
-
+        ReaderAPI readerAPI = new ReaderAPI();
+        HttpResponse response = readerAPI.httpResponse();
+        List<ReservationDTO> reservationDTOS = readerAPI.reservationDTOS(response);
+        if (!batch) {
+            WrapReservationDTO wrapReservationDTO = new WrapReservationDTO();
+            wrapReservationDTO.setReservationDTOS(reservationDTOS);
             System.out.println("Batch = " + wrapReservationDTO.getReservationDTOS().size());
-                  System.out.println("a " + a);
+            batch = true;
+            return wrapReservationDTO;
 
-        return wrapReservationDTO;
+        } else {
+          batch = false;
+          WrapReservationDTO wrapReservationDTO = new WrapReservationDTO();
+          System.out.println("batch = " + batch + "      wrapreservation =  "+ wrapReservationDTO);
+            return null;
+        }
     }
+
 }

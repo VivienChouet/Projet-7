@@ -38,4 +38,8 @@ public class BatchService {
                 return reservations1;
 
     }
+
+    public void update(List<Reservation> reservations) {
+
+    }
 }

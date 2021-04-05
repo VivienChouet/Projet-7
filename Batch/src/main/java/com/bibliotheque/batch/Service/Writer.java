@@ -1,28 +1,24 @@
 package com.bibliotheque.batch.Service;
 
+import com.bibliotheque.batch.DTO.WrapReservationDTO;
 import org.springframework.batch.item.ItemWriter;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.List;
 
-public class Writer implements ItemWriter<SimpleMailMessage> {
+public class Writer implements ItemWriter<WrapReservationDTO> {
 
-    private JavaMailSender javaMailSender;
 
-    public Writer(JavaMailSender javaMailSender){
-        this.javaMailSender = javaMailSender;
+    public Writer(){
+
     }
 
+
     @Override
-    public void write(List<? extends SimpleMailMessage> list) throws Exception {
-        System.out.println("Writer : ");
-        JavaMailSender javaMailSender = new JavaMailSenderImpl();
-        for (SimpleMailMessage simpleMailMessage:list){
-            if(simpleMailMessage != null){
-                javaMailSender.send(simpleMailMessage);
-            }
+    public void write(List<? extends WrapReservationDTO> reservationDTOS) throws Exception {
+        System.out.println("size writer : " + reservationDTOS.size());
+        for (int i =0 ; i < reservationDTOS.size();i++){
+            System.out.println(reservationDTOS.get(i).getReservationDTOS().get(i).getId());
         }
+
     }
 }

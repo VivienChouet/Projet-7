@@ -20,7 +20,7 @@ public class ReaderAPI {
     public ReaderAPI() {
     }
 
-    public static HttpResponse httpResponse() {
+    public HttpResponse httpResponse() {
 
         HttpClient httpClient = HttpClient.newBuilder().build();
 
@@ -36,7 +36,7 @@ public class ReaderAPI {
         return response;
     }
 
-    public static List<ReservationDTO> reservationDTOS(HttpResponse response) throws JsonProcessingException {
+    public List<ReservationDTO> reservationDTOS(HttpResponse response) throws JsonProcessingException {
         var mapper = new ObjectMapper();
         var mapCollectionType = mapper.getTypeFactory().constructCollectionType(List.class, ReservationDTO.class);
         var json = response.body();
