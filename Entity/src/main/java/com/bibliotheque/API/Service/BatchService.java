@@ -25,21 +25,28 @@ public class BatchService {
 
     public List<Reservation> batch() {
         logger.info("Batch en cours");
-        List<Reservation> reservations = reservationRepository.findByEnded(false);
+        List<Reservation> reservations = reservationRepository.findByEndedAndBatch(false, false);
         List<Reservation> reservations1 = null;
         Date today = new Date();
-        for (int i = 0; i < reservations.size(); i++
-        ) {
-            if (reservations.get(i).getDate_debut().before(today)) {
-                reservations1 = reservations;
+        logger.info("reservation = " + reservations.size());
+        if (reservations.size() != 0){
+            for (int i = 0; i < reservations.size(); i++
+            ) {
+                if (reservations.get(i).getDate_debut().before(today)) {
+                    reservations1 = reservations;
+                }
             }
-        }
-        logger.info("batch envoyé = " + reservations1.size());
-                return reservations1;
+            logger.info("batch envoyé = " + reservations1.size());
+            return reservations1;
 
+        }
+        return null;
     }
 
-    public void update(List<Reservation> reservations) {
 
+    public void update(Reservation reservation) {
+        logger.info("update reservation id : " + reservation.id + " batch done");
+        reservation.setBatch(true);
+        reservationRepository.save(reservation);
     }
 }

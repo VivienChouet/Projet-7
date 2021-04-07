@@ -1,38 +1,37 @@
 package com.bibliotheque.batch.Service;
 
 import com.bibliotheque.batch.DTO.ReservationDTO;
-import com.bibliotheque.batch.DTO.WrapReservationDTO;
 import org.springframework.batch.item.ItemReader;
 
 import java.net.http.HttpResponse;
 import java.util.List;
 
-public class Reader implements ItemReader<WrapReservationDTO> {
-public boolean batch = false;
+public class Reader implements ItemReader<ReservationDTO> {
+    public boolean batch = false;
+    private int count = 0;
 
-    public Reader (){
+    public Reader() {
         System.out.println("ca marche ? " + batch);
         batch = false;
     }
 
+
     @Override
-    public WrapReservationDTO read() throws Exception {
+    public ReservationDTO read() throws Exception {
         ReaderAPI readerAPI = new ReaderAPI();
         HttpResponse response = readerAPI.httpResponse();
-        List<ReservationDTO> reservationDTOS = readerAPI.reservationDTOS(response);
-        if (!batch) {
-            WrapReservationDTO wrapReservationDTO = new WrapReservationDTO();
-            wrapReservationDTO.setReservationDTOS(reservationDTOS);
-            System.out.println("Batch = " + wrapReservationDTO.getReservationDTOS().size());
-            batch = true;
-            return wrapReservationDTO;
-
-        } else {
-          batch = false;
-          WrapReservationDTO wrapReservationDTO = new WrapReservationDTO();
-          System.out.println("batch = " + batch + "      wrapreservation =  "+ wrapReservationDTO);
+        System.out.println("response body = " + response.body());
+        System.out.println("response header = " + response.headers());
+        if (response.body().toString() != "") {
+            List<ReservationDTO> reservationDTOS = readerAPI.reservationDTOS(response);
+            if (count < reservationDTOS.size()) {
+                System.out.println("Batch = " + reservationDTOS.size());
+                return reservationDTOS.get(count++);
+            }
+            count = 0;
             return null;
-        }
-    }
 
+        }
+        return null;
+    }
 }

@@ -1,6 +1,6 @@
 package com.bibliotheque.batch.Service;
 
-import com.bibliotheque.batch.DTO.WrapReservationDTO;
+import com.bibliotheque.batch.DTO.ReservationDTO;
 import com.bibliotheque.batch.Utility.LoggingController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +16,6 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.javamail.JavaMailSender;
 
 @Configuration
 @EnableBatchProcessing
@@ -31,8 +30,7 @@ public class BatchService {
     @Autowired
     private JobLauncher launcher;
 
-    @Autowired
-    private JavaMailSender javaMailSender;
+
 
     Logger logger = LoggerFactory.getLogger(LoggingController.class);
 
@@ -52,7 +50,7 @@ public class BatchService {
 @Bean
     Step step1 (){
     logger.info("Lauch step1");
-    return steps.get("step1").<WrapReservationDTO, WrapReservationDTO>chunk(1)
+    return steps.get("step1").<ReservationDTO, ReservationDTO>chunk(1)
             .reader(new Reader())
             .processor(new Processor())
             .writer(new Writer())

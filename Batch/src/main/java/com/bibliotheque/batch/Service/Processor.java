@@ -1,15 +1,13 @@
 package com.bibliotheque.batch.Service;
 
 import com.bibliotheque.batch.DTO.ReservationDTO;
-import com.bibliotheque.batch.DTO.WrapReservationDTO;
 import org.springframework.batch.item.ItemProcessor;
 
-public class Processor implements ItemProcessor<WrapReservationDTO, WrapReservationDTO> {
+public class Processor implements ItemProcessor<ReservationDTO, ReservationDTO> {
 
     @Override
-    public WrapReservationDTO process(WrapReservationDTO wrapReservationDTO) throws Exception {
-        for (int i = 0; i < wrapReservationDTO.getReservationDTOS().size(); i++) {
-            ReservationDTO reservationDTO = wrapReservationDTO.getReservationDTOS().get(i);
+    public ReservationDTO process(ReservationDTO reservationDTO) throws Exception {
+
             System.out.println("email = " + reservationDTO.getUser().getEmail());
             System.out.println("user name = " + reservationDTO.getUser().getName());
             System.out.println("book = " + reservationDTO.getExemplaire().getBook().getTitle());
@@ -39,9 +37,9 @@ public class Processor implements ItemProcessor<WrapReservationDTO, WrapReservat
             } catch (IOException ex) {
                 throw ex;
             }*/
-            System.out.println("Valeur de i = " + i);
+
             //reservationDTO.setBatch(true);
-        }
-        return wrapReservationDTO;
+
+        return reservationDTO;
     }
 }
