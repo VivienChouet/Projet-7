@@ -119,3 +119,7 @@ Using generated security password: 85a4fd92-18bb-41af-9a11-54a5def76bb3
 2021-04-07 [http-nio-8080-exec-7] INFO  c.b.API.Utility.LoggingController - reservation = 0
 2021-04-07 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - Batch en cours
 2021-04-07 [http-nio-8080-exec-8] INFO  c.b.API.Utility.LoggingController - reservation = 0
+2021-04-07 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-04-07 [http-nio-8080-exec-10] INFO  c.b.API.Utility.LoggingController - reservation = 0
+2021-04-07 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - Batch en cours
+2021-04-07 [http-nio-8080-exec-2] INFO  c.b.API.Utility.LoggingController - reservation = 0

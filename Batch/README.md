@@ -3,7 +3,7 @@
 Batch ayant pour objectif d'envoyer des emails aux personnes n'ayant pas rendu leurs livres dans les temps.
 
 
-#Technologie
+# Technologie
     - Spring boot batch
     - Sengrid
     - Lombok

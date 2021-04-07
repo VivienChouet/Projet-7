@@ -1,9 +1,9 @@
 # Readme WEB projet 7
 
-##Description 
+## Description 
 Partie web du projet-7 du cursus java de Openclassroom
 
-##Technologie
+## Technologie
     - Spring boot web
     - Thymeleaf
     - Lombok

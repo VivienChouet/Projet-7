@@ -1,13 +1,13 @@
-#Projet 7
+# Projet 7
 
 API pour le projet 7 du cursu Develloppeur JAVA de Openclassroom
 
 L'ensemble du projet est disponible sur Github : https://github.com/Slaschh/Projet-7
 
-##Description :
+## Description :
 API permettant la gestion des stocks/emprunts de livre d'une bibliotheque.
 
-##Technologie : 
+## Technologie : 
     -   Spring Boot
     -   Hibernate
     -   MySQL
@@ -56,8 +56,8 @@ API permettant la gestion des stocks/emprunts de livre d'une bibliotheque.
     
  
 
-##Amelioration a mettre en place : 
+## Amelioration a mettre en place : 
 
 Systeme de recherche dans la db pour les livres
 
-##Bug :
+## Bug :
