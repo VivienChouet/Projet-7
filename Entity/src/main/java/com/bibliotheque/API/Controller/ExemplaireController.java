@@ -5,7 +5,6 @@ import com.bibliotheque.API.Entity.Dto.ExemplaireDTO;
 import com.bibliotheque.API.Entity.Dto.NewExemplaireDTO;
 import com.bibliotheque.API.Entity.Exemplaire;
 import com.bibliotheque.API.Entity.Mapper.ExemplaireMapper;
-import com.bibliotheque.API.Repository.ExemplaireRepository;
 import com.bibliotheque.API.Service.ExemplaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,9 +45,9 @@ public class ExemplaireController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ExemplaireDTO> deleteExemplaire (@PathVariable int id){
-        exemplaireService.delete(id);
+    @DeleteMapping("/")
+    public ResponseEntity<ExemplaireDTO> deleteExemplaire (@RequestBody NewExemplaireDTO newExemplaireDTO){
+        exemplaireService.delete(newExemplaireDTO.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

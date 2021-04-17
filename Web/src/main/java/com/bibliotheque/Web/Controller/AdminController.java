@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -54,6 +55,12 @@ public class AdminController {
         model.addAttribute("admin", admin);
 
     return "admin/gestion-reservation";
+    }
+
+    @PostMapping("/reservation/{id}")
+    public ModelAndView reservationEnded (@PathVariable int id){
+        reservationService.endedReservation(id);
+        return new ModelAndView("redirect:/admin/reservation" );
     }
 
 }

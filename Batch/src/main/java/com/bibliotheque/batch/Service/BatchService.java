@@ -37,7 +37,6 @@ public class BatchService {
 
 @Bean
     public Job processJob() {
-    logger.info("ca tourne ? ");
     return  jobs.get("processJob")
             .incrementer(new RunIdIncrementer())
             .listener(listener())
@@ -62,7 +61,6 @@ public class BatchService {
     return  new JobExecutionListener() {
         @Override
         public void beforeJob(JobExecution jobExecution) {
-            System.out.println("Test lire l'API ici");
         Reader reader = new Reader();
         }
 

@@ -32,7 +32,9 @@ public class BatchController {
     @GetMapping("/")
     public ResponseEntity<List<ReservationDTO>> Batch() {
         List<Reservation> reservations = batchService.batch();
-        return new ResponseEntity<>(reservationMapper.toDto(reservations), HttpStatus.OK);
+        if(reservations != null){
+        return new ResponseEntity<>(reservationMapper.toDto(reservations), HttpStatus.OK);}
+        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }
 
     @PostMapping("/{id}")

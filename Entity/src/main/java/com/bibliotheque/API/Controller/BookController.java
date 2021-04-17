@@ -27,8 +27,6 @@ public class BookController {
     @RequestMapping("/")
     public ResponseEntity <List<BookDTO>>listOfBooks() {
         List<Book> books = this.bookService.findAll();
-        System.out.println("book = " + books);
-        System.out.println("Mappeur = " + bookMapper.toDto(books));
         return new ResponseEntity<>(bookMapper.toDto(books), HttpStatus.OK);
     }
 
@@ -43,7 +41,6 @@ public class BookController {
 
     @PostMapping("/")
     public ResponseEntity<BookDTO> newBook(@RequestBody BookDTO bookDTO) {
-        System.out.println("book => " + bookMapper.toEntity(bookDTO));
         bookService.save(bookMapper.toEntity(bookDTO));
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -52,6 +49,15 @@ public class BookController {
     public ResponseEntity <BookDTO> updateBook(@RequestBody BookDTO bookDTO){
         bookService.update(bookMapper.toEntity(bookDTO));
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping("/search")
+    public ResponseEntity<BookDTO> ResearchByBookTitle (@RequestBody BookDTO bookDTO){
+       Book book= this.bookService.findByTitle(bookDTO.getTitle());
+        if (book == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(bookMapper.toDto(book), HttpStatus.OK);
     }
 
 }

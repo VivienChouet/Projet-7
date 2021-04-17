@@ -11,7 +11,7 @@ public class Reader implements ItemReader<ReservationDTO> {
     private int count = 0;
 
     public Reader() {
-        System.out.println("ca marche ? " + batch);
+
         batch = false;
     }
 
@@ -20,12 +20,9 @@ public class Reader implements ItemReader<ReservationDTO> {
     public ReservationDTO read() throws Exception {
         ReaderAPI readerAPI = new ReaderAPI();
         HttpResponse response = readerAPI.httpResponse();
-        System.out.println("response body = " + response.body());
-        System.out.println("response header = " + response.headers());
-        if (response.body().toString() != "") {
+        if (response.statusCode() != 204) {
             List<ReservationDTO> reservationDTOS = readerAPI.reservationDTOS(response);
             if (count < reservationDTOS.size()) {
-                System.out.println("Batch = " + reservationDTOS.size());
                 return reservationDTOS.get(count++);
             }
             count = 0;

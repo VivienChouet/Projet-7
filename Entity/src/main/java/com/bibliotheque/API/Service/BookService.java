@@ -36,4 +36,10 @@ public class BookService {
     public void update(Book book) {
         bookRepository.save(book);
     }
+
+    public Book findByTitle(String name) {
+        logger.info("research book name = " + name);
+       Book book = bookRepository.findByTitle(name);
+        return book;
+    }
 }

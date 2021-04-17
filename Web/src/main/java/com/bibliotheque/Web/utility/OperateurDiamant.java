@@ -21,6 +21,13 @@ public class OperateurDiamant<T> {
         Mapper reader
      */
 
+    /**
+     * Method to convert response to single Object
+     * @param response
+     * @param classType
+     * @return classType value
+     * @throws JsonProcessingException
+     */
     public T singleObject(HttpResponse response, Class<T> classType) throws JsonProcessingException {
         var mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
@@ -29,6 +36,13 @@ public class OperateurDiamant<T> {
         return value;
     }
 
+    /**
+     * Method to convert response to List of Object
+     * @param response
+     * @param classType
+     * @return List<classType>
+     * @throws JsonProcessingException
+     */
     public List<T> listObject(HttpResponse response, Class<T> classType) throws JsonProcessingException {
         var mapper = new ObjectMapper();
         var mapCollectionType = mapper.getTypeFactory().constructCollectionType(List.class, classType);
@@ -37,6 +51,12 @@ public class OperateurDiamant<T> {
         return value;
     }
 
+    /**
+     * Method to convert an object to json
+     * @param object
+     * @return json
+     * @throws JsonProcessingException
+     */
     public Object jsonConvert(Object object) throws JsonProcessingException {
 
         var mapper = new ObjectMapper();
@@ -50,6 +70,12 @@ public class OperateurDiamant<T> {
      */
 
     HttpClient httpClient = HttpClient.newBuilder().build();
+
+    /**
+     * Method GET
+     * @param url
+     * @return
+     */
 
     public HttpResponse Request(String url){
 
@@ -68,6 +94,12 @@ public class OperateurDiamant<T> {
         return response;
     }
 
+    /**
+     * Method POST
+     * @param url
+     * @param json
+     * @return
+     */
     public HttpResponse post (String url, String json){
 
         HttpRequest requestPost = HttpRequest.newBuilder().uri(URI.create(url)).setHeader("Content-Type" , "application/json").POST(HttpRequest.BodyPublishers.ofString(json)).build();
@@ -82,6 +114,13 @@ public class OperateurDiamant<T> {
  return response;
 
     }
+
+    /**
+     * Method GET with Token
+     * @param url
+     * @param token
+     * @return
+     */
 
     public HttpResponse RequestSecure (String url, String token){
 

@@ -22,13 +22,13 @@
                         <td th:text="${user.name}"></td>
                         <td th:text="${user.email}"></td>
                         <td th:text="${user.admin}"></td>
-                        <td th:if="${user.admin} == true">
+                        <td th:if="${user.admin} == false">
                             <form method="post" th:action="@{/admin/{id}(id=${user.id})}">
                                 <button class="btn btn-primary btn-block btn-flat" type="submit">Ajout Admin
                                 </button>
                             </form>
                         </td>
-                        <td th:if="${user.admin} == false">
+                        <td th:if="${user.admin} == true">
                             <form method="post" th:action="@{/admin/{id}(id=${user.id})}">
                                 <button class="btn btn-primary btn-block btn-flat" type="submit">Retrait Admin
                                 </button>

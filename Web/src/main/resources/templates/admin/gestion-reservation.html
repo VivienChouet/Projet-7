@@ -24,7 +24,7 @@
                         <td th:text="${reservation.exemplaire.book.title}"></td>
                         <td th:text="${reservation.exemplaire.edition}"></td>
                         <td th:text="${reservation.date_fin}"></td>
-                        <td th:if="${reservation.exemplaire.available} == true">
+                        <td th:if="${reservation.exemplaire.available} == false">
                             <form method="post" th:action="@{/admin/reservation/{id}(id=${reservation.id})}">
                                 <button class="btn btn-primary btn-block btn-flat" type="submit">livre rendu
                                 </button>

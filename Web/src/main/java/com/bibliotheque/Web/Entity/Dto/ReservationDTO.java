@@ -12,6 +12,7 @@ public class ReservationDTO {
     public Date date_fin;
     private boolean ended;
     private boolean extension;
+    private boolean batch;
 
     private UserDTO user;
 

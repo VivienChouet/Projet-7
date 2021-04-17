@@ -40,7 +40,10 @@ public class ReaderAPI {
         var mapper = new ObjectMapper();
         var mapCollectionType = mapper.getTypeFactory().constructCollectionType(List.class, ReservationDTO.class);
         var json = response.body();
+        System.out.println(json);
+        if (json.toString() != ""){
         List<ReservationDTO> value = mapper.readValue(String.valueOf(json), mapCollectionType);
-        return value;
+        return value;}
+        return null;
     }
 }

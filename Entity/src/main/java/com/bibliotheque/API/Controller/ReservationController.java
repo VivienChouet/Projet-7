@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
 
 @RestController
@@ -48,19 +47,20 @@ public class ReservationController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ReservationDTO> updateReservation (@PathVariable int id){
-        Reservation reservation = this.reservationService.findById(id);
-        if(reservation == null )
+    @PutMapping("/")
+    public ResponseEntity<ReservationDTO> updateReservation (@RequestBody NewReservationDTO newReservationDTO) {
+
+        if(newReservationDTO == null )
         {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(reservationMapper.toDto(reservation),HttpStatus.OK);
+        reservationService.save(newReservationDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ReservationDTO> deleteReservation (@PathVariable int id){
-        reservationService.delete(id);
+    @DeleteMapping("/")
+    public ResponseEntity<ReservationDTO> deleteReservation (@RequestBody NewReservationDTO newReservationDTO){
+        reservationService.delete(newReservationDTO.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

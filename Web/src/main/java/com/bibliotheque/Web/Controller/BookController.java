@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,20 +30,20 @@ public class BookController {
 
   @GetMapping(value = "/")
     public String homeBook (Model model) throws IOException, InterruptedException {
-
-       List<BookDTO> books = bookService.listBook();
-        model.addAttribute("books", books);
+      BookDTO bookDTO = new BookDTO();
+      List<BookDTO> books = bookService.listBook();
+      model.addAttribute("books", books);
+      model.addAttribute("book", bookDTO);
       boolean connected = this.userService.connected();
       boolean admin = this.userService.admin();
       model.addAttribute("connected", connected);
       model.addAttribute("admin", admin);
 
-        return "book/home";
-    }
+      return "book/home";
+  }
 
     @GetMapping (value = "/new")
         public String newBook (Model model) throws JsonProcessingException {
-
        BookDTO book = new BookDTO();
        model.addAttribute("book", book );
         boolean connected = this.userService.connected();
@@ -51,7 +52,6 @@ public class BookController {
         model.addAttribute("admin", admin);
        return "book/new";
     }
-
 
 
 @PostMapping (value = "/new")
@@ -71,12 +71,17 @@ public class BookController {
         boolean admin = this.userService.admin();
         model.addAttribute("connected", connected);
         model.addAttribute("admin", admin);
-        if(exemplaireDTOS.isEmpty()) {
+        if (exemplaireDTOS.isEmpty()) {
             return "book/ide";
         }
         model.addAttribute("exemplaires", exemplaireDTOS);
         return "book/id";
+    }
 
-
+    @RequestMapping(value = "/search")
+    public ModelAndView ResearchByBook(Model model, @RequestParam(name = "title") String title) throws JsonProcessingException {
+        System.out.println("recherche book title : " + title);
+        BookDTO bookDTO = bookService.findByTitle(title);
+        return new ModelAndView("redirect:/book/"+ bookDTO.getId());
     }
 }
