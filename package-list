@@ -1,0 +1,17 @@
+com.bibliotheque.API
+com.bibliotheque.API.Controller
+com.bibliotheque.API.Entity
+com.bibliotheque.API.Entity.Dto
+com.bibliotheque.API.Entity.Mapper
+com.bibliotheque.API.Repository
+com.bibliotheque.API.Service
+com.bibliotheque.API.Utility
+com.bibliotheque.Web
+com.bibliotheque.Web.Controller
+com.bibliotheque.Web.Entity.Dto
+com.bibliotheque.Web.service
+com.bibliotheque.Web.utility
+com.bibliotheque.batch
+com.bibliotheque.batch.DTO
+com.bibliotheque.batch.Service
+com.bibliotheque.batch.Utility
