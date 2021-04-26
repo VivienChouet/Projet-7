@@ -2,6 +2,7 @@ package com.bibliotheque.Web.Controller;
 
 import com.bibliotheque.Web.Entity.Dto.BookDTO;
 import com.bibliotheque.Web.Entity.Dto.ExemplaireDTO;
+import com.bibliotheque.Web.Entity.Dto.NumberExemplaireDTO;
 import com.bibliotheque.Web.service.BookService;
 import com.bibliotheque.Web.service.ExemplaireService;
 import com.bibliotheque.Web.service.UserService;
@@ -64,17 +65,22 @@ public class BookController {
 
     @GetMapping (value = "/{id}")
     public String idBook (@PathVariable int id, Model model) throws JsonProcessingException {
+        ExemplaireDTO exemplaireDTO = new ExemplaireDTO();
         BookDTO bookDTO = bookService.findById(id);
-        List<ExemplaireDTO> exemplaireDTOS = exemplaireService.listExemplaireByIdBook(id);
+        List<ExemplaireDTO> exemplaireDTOS = exemplaireService.listExemplaireByIdBookAndAvailable(id);
+        List<NumberExemplaireDTO> numberExemplaireDTOS = exemplaireService.CountExemplaireWithoutDouble(exemplaireDTOS);
         model.addAttribute("book",bookDTO);
         boolean connected = this.userService.connected();
         boolean admin = this.userService.admin();
         model.addAttribute("connected", connected);
         model.addAttribute("admin", admin);
+        model.addAttribute("editions", numberExemplaireDTOS);
+        model.addAttribute("reservation", exemplaireDTO);
         if (exemplaireDTOS.isEmpty()) {
             return "book/ide";
         }
         model.addAttribute("exemplaires", exemplaireDTOS);
+        System.out.println(numberExemplaireDTOS);
         return "book/id";
     }
 

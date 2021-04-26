@@ -11,7 +11,7 @@ public class NewReservationDTO {
     public Date date_debut;
     public Date date_fin;
 
-    private int iduser;
-    private int idexemplaire;
+    public int iduser;
+    public int idexemplaire;
 }
 

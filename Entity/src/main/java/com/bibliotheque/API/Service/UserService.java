@@ -33,29 +33,52 @@ public class UserService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    /**
+     * Find All User
+     * @return List<User>
+     */
     public List<User> findAll() {
         logger.info("List User");
         List<User> users = this.userRepository.findAll();
         return users;
     }
 
+    /**
+     * Find User By Id
+     * @param id
+     * @return User
+     */
     public User findById(int id) {
         logger.info("find UserId = " + id);
         User user = this.userRepository.findById(id).get();
         return user;
     }
 
+    /**
+     * save
+     * @param user
+     */
     public void save(User user) {
         logger.info("new user = " + user.name );
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
+    /**
+     * Delete
+     * @param id
+     */
     public void delete(int id) {
         logger.info("delete User = " + id);
         userRepository.delete(findById(id));
     }
 
+    /**
+     * Loggin
+     * @param user
+     * @param password
+     * @return Boolean
+     */
     public Boolean loginUser(String user, String password){
         logger.info("check login in progress");
         User user1 = userRepository.findByName(user);
@@ -69,7 +92,12 @@ public class UserService {
     }
 
 
-
+    /**
+     *
+     * @param username
+     * @param ttlMillis
+     * @return Bearer Token
+     */
     public static String createJWT(String username, long ttlMillis) {
 
         String SECRET_KEY = "mySecretKey";
@@ -108,7 +136,11 @@ public class UserService {
         return "Bearer " + builder.compact();
     }
 
-
+    /**
+     * Find Username By Token
+     * @param token
+     * @return Username
+     */
     public String findUsernameByToken (String token) {
         String jwtToken = token.replace("Bearer ", "");
         String username = decodeJWT(jwtToken).getSubject();
@@ -117,6 +149,11 @@ public class UserService {
 
     }
 
+    /**
+     * decode JWT
+     * @param jwt
+     * @return claims
+     */
     public static Claims decodeJWT(String jwt) {
         String SECRET_KEY = "mySecretKey";
         //This line will throw an exception if it is not a signed JWS (as expected)
@@ -127,7 +164,11 @@ public class UserService {
 
     }
 
-
+    /**
+     * Find User by Username
+     * @param username
+     * @return User
+     */
     public User findByUsername(String username) {
         logger.info("Find User By Username = " + username );
         User user = userRepository.findByName(username);

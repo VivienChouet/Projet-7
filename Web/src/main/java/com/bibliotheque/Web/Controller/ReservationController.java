@@ -7,10 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -25,9 +22,10 @@ public class ReservationController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/{id}")
-    public ModelAndView newReservation(@PathVariable int id, Model model) throws JsonProcessingException {
-        reservationService.newReservation(id);
+    @RequestMapping("/edition")
+    public ModelAndView newReservation(@RequestParam (name ="edition") String edition,@RequestParam (name = "id") Integer bookId, Model model) throws JsonProcessingException {
+        System.out.println("Controller edition = " + edition + " BookId = " + bookId );
+        reservationService.newReservation(edition, bookId);
         boolean connected = this.userService.connected();
         boolean admin = this.userService.admin();
         model.addAttribute("connected", connected);

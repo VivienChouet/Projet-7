@@ -23,8 +23,6 @@ public class HomeController {
         boolean admin = this.userService.admin();
         model.addAttribute("connected", connected);
         model.addAttribute("admin", admin);
-
         return "home";
-
     }
 }

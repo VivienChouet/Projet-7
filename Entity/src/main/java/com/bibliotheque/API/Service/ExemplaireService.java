@@ -23,18 +23,31 @@ public class ExemplaireService {
 
     Logger logger = LoggerFactory.getLogger(LoggingController.class);
 
+    /**
+     * find All
+     * @return List<Exemplaire>
+     */
     public List<Exemplaire> findAll() {
         logger.info("List Exemplaire");
         List<Exemplaire> exemplaires = this.exemplaireRepository.findAll();
         return exemplaires;
     }
 
+    /**
+     * findById
+     * @param id
+     * @return Exemplaire
+     */
     public Exemplaire findById(int id) {
         logger.info("Exemplaire id " + id);
-        Exemplaire exemplaire = this.exemplaireRepository.findById(id).get();
+        Exemplaire exemplaire = this.exemplaireRepository.findById(id);
         return exemplaire;
     }
 
+    /**
+     * Save
+     * @param newExemplaireDTO
+     */
     public void save(NewExemplaireDTO newExemplaireDTO) {
         logger.info("save new exemplaire = ");
         Exemplaire exemplaire = new Exemplaire();
@@ -45,15 +58,35 @@ public class ExemplaireService {
         exemplaireRepository.save(exemplaire);
     }
 
+    /**
+     * Delete
+     * @param id
+     */
     public void delete(int id) {
         logger.info("delete = " + id);
-        Exemplaire exemplaire = this.exemplaireRepository.findById(id).get();
+        Exemplaire exemplaire = this.exemplaireRepository.findById(id);
         exemplaireRepository.delete(exemplaire);
     }
 
-    public List<Exemplaire> findByBook_id(int id) {
+    /**
+     * find Exemplaire By Book_id
+     * @param id
+     * @return List<Exemplaire>
+     */
+    public List<Exemplaire> findByBook_idAndAvailable(int id) {
         logger.info("find Exemplaire by Book Id = " + id);
-        List<Exemplaire> exemplaires = this.exemplaireRepository.findByBook_id(id);
+        List<Exemplaire> exemplaires = this.exemplaireRepository.findByBook_idAndAvailable(id, true);
+        return exemplaires;
+    }
+
+    public List<Exemplaire> findByBook_idAndEdition(int id, String edition) {
+        logger.info("Search By book_id : " + id + " And by edition : " + edition);
+        List<Exemplaire> exemplaires = this.exemplaireRepository.findByBook_IdAndEdition(id, edition);
+        return exemplaires;
+    }
+
+    public List<Exemplaire> findbyAvailable() {
+        List<Exemplaire> exemplaires = this.exemplaireRepository.findByAvailable(true);
         return exemplaires;
     }
 }

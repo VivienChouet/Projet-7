@@ -9,5 +9,11 @@ import java.util.List;
 @Repository
 public interface ExemplaireRepository extends JpaRepository<Exemplaire, Integer> {
 
-    List<Exemplaire> findByBook_id (int id);
+
+    Exemplaire findById(int id);
+    List<Exemplaire> findByBook_IdAndEdition(int id, String edition);
+
+    List<Exemplaire> findByAvailable(boolean b);
+
+    List<Exemplaire> findByBook_idAndAvailable(int id, boolean b);
 }

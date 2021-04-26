@@ -23,6 +23,11 @@ public class UserService {
 
     boolean admin = false;
 
+    /**
+     *
+     * @param userDTO
+     * @throws JsonProcessingException
+     */
     public void connexion(UserDTO userDTO) throws JsonProcessingException {
         logger.info("connexion de : " + userDTO.name);
         String json = (String) operateurDiamant.jsonConvert(userDTO);
@@ -33,6 +38,12 @@ public class UserService {
         logger.info(token);
     }
 
+    /**
+     *
+     * @param id
+     * @return UserDTO
+     * @throws JsonProcessingException
+     */
     public UserDTO idUser(int id) throws JsonProcessingException {
         HttpResponse response = operateurDiamant.RequestSecure("http://localhost:8080/user/" + id, token);
         UserDTO userDTO = (UserDTO) operateurDiamant.singleObject(response, UserDTO.class);
@@ -40,23 +51,43 @@ public class UserService {
         return userDTO;
     }
 
+    /**
+     *
+     * @return UserDTO
+     * @throws JsonProcessingException
+     */
     public UserDTO connectedUser() throws JsonProcessingException {
         HttpResponse response = operateurDiamant.RequestSecure("http://localhost:8080/user/token", token);
         UserDTO user = (UserDTO) operateurDiamant.singleObject(response, UserDTO.class);
         return user;
     }
 
+    /**
+     *
+     * @return List<UserDTO>
+     * @throws JsonProcessingException
+     */
     public List<UserDTO> listUser() throws JsonProcessingException {
         HttpResponse response = operateurDiamant.RequestSecure("http://localhost:8080/user/", token);
         List<UserDTO> userDTOS = operateurDiamant.listObject(response, UserDTO.class);
         return userDTOS;
     }
 
+    /**
+     *
+     * @param userDTO
+     * @throws JsonProcessingException
+     */
     public void newUser(UserDTO userDTO) throws JsonProcessingException {
         String json = (String) operateurDiamant.jsonConvert(userDTO);
         HttpResponse response = operateurDiamant.post("http://localhost:8080/user/", json);
     }
 
+    /**
+     *
+     * @return Boolean userDTO.admin
+     * @throws JsonProcessingException
+     */
     public boolean admin() throws JsonProcessingException {
         if (token == null) {
             return false;
@@ -65,12 +96,19 @@ public class UserService {
         return userDTO.admin;
     }
 
+    /**
+     *
+     * @return Boolean connected
+     */
     public boolean connected() {
         boolean connected;
         connected = token != null;
         return connected;
     }
 
+    /**
+     *
+     */
     public void logout() {
         token = null;
         admin = false;

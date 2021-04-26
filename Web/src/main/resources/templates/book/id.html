@@ -29,43 +29,38 @@
                                 <p class="card-text" th:text="*{book.resume}"></p>
                             </div>
                         </div>
-                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="row" th:each="edition01 : ${editions}" th:if="*{connected == true}">
+    <div class="container">
+        <div class="card">
+            <div class="card-header" style="justify-content: center">
+               <h5>Edition : </h5><a th:text="*{edition01.name}"/>      <h5>Nombre d'exemplaire disponible : </h5><a th:text="*{edition01.number}"/>
+            </div>
+            <div card="card-panel">
+                <div class="col-2" style="justify-content: center">
+                    <form method="post" th:action="@{/reservation/edition}">
+                        <input aria-label="edition" class="form-control mr-sm-2" name="edition" placeholder="edition"
+                               th:value="${edition01.name}"
+                               type="hidden">
+                        <input aria-label="id" class="form-control mr-sm-2" name="id" placeholder="id"
+                               th:value="${book.id}"
+                               type="hidden">
+                        <button class="btn btn-primary btn-block btn-flat" type="submit">Reservation
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="container col-10">
-        <div class="card" style="margin-top: 20px; margin-left: auto; margin-right: auto ; padding: 0">
-            <div class="card-header">
-                <h1> Liste des exemplaire disponible</h1>
-            </div>
-            <div class="panel-body">
-                <table class="table">
-                    <thread>
-                        <tr>
-                            <th scope="col">Edition</th>
-                            <th scope="col">Reservation</th>
-                        </tr>
-                    </thread>
-                    <tbody>
-                    <tr th:each="exemplaire : ${exemplaires}">
-                        <td th:text="${exemplaire.edition}"></td>
-                        <td th:if="${exemplaire.available} == true">
-                            <form method="post" th:action="@{/reservation/{id}(id=${exemplaire.id})}">
-                                <button class="btn btn-primary btn-block btn-flat" type="submit">Reservation
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="row" style="padding-top: 20px; justify-content: center; align-content: center">
     <div class="form-group col-xs-offset-8 col-xs-4">

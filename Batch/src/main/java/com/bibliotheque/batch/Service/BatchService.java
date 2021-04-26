@@ -30,8 +30,6 @@ public class BatchService {
     @Autowired
     private JobLauncher launcher;
 
-
-
     Logger logger = LoggerFactory.getLogger(LoggingController.class);
 
 
@@ -43,7 +41,6 @@ public class BatchService {
             .flow(step1())
             .end()
             .build();
-
 }
 
 @Bean
@@ -61,7 +58,6 @@ public class BatchService {
     return  new JobExecutionListener() {
         @Override
         public void beforeJob(JobExecution jobExecution) {
-        Reader reader = new Reader();
         }
 
         @Override

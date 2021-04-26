@@ -1,9 +1,7 @@
 package com.bibliotheque.batch.Service;
 
 import com.bibliotheque.batch.DTO.ReservationDTO;
-import com.bibliotheque.batch.Utility.OperateurDiamant;
 import org.springframework.batch.item.ItemWriter;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.net.URI;
@@ -14,8 +12,6 @@ import java.util.List;
 
 public class Writer implements ItemWriter<ReservationDTO> {
 
-    @Autowired
-    OperateurDiamant operateurDiamant;
 
     public Writer(){
 

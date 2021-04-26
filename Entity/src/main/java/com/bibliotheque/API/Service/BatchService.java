@@ -23,6 +23,11 @@ public class BatchService {
 
     Logger logger = LoggerFactory.getLogger(LoggingController.class);
 
+
+    /**
+     * batch
+     * @return List<Reservation>
+     */
     public List<Reservation> batch() {
         logger.info("Batch en cours");
         List<Reservation> reservations = reservationRepository.findByEndedAndBatch(false, false);
@@ -32,18 +37,21 @@ public class BatchService {
         if (reservations.size() != 0){
             for (int i = 0; i < reservations.size(); i++
             ) {
-                if (reservations.get(i).getDate_debut().before(today)) {
+                if (reservations.get(i).getDate_fin().before(today)) {
                     reservations1 = reservations;
                 }
             }
-            logger.info("batch envoyé = " + reservations1.size());
+//            logger.info("batch envoyé = " + reservations1.size());
             return reservations1;
 
         }
         return null;
     }
 
-
+    /**
+     * Batch done
+     * @param reservation
+     */
     public void update(Reservation reservation) {
         logger.info("update reservation id : " + reservation.id + " batch done");
         reservation.setBatch(true);

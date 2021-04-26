@@ -18,25 +18,47 @@ public class BookService {
     @Autowired
     BookRepository bookRepository;
 
+    /**
+     * findAll
+     * @return List<Book>
+     */
     public List<Book> findAll() {
         logger.info("return list book");
         return bookRepository.findAll();
     }
 
+    /**
+     * findById
+     * @param id
+     * @return Book
+     */
     public Book findById(int id) {
         logger.info("return book id =" + id);
         return  bookRepository.findById(id).get();
     }
 
+    /**
+     * Save
+     * @param book
+     */
     public void save(Book book) {
         logger.info("save new book = " + book.title);
         bookRepository.save(book);
     }
 
+    /**
+     * Update
+     * @param book
+     */
     public void update(Book book) {
         bookRepository.save(book);
     }
 
+    /**
+     * findByTitle
+     * @param name
+     * @return Book
+     */
     public Book findByTitle(String name) {
         logger.info("research book name = " + name);
        Book book = bookRepository.findByTitle(name);

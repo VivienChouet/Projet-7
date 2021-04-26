@@ -40,7 +40,7 @@ public class OperateurDiamant<T> {
      * Method to convert response to List of Object
      * @param response
      * @param classType
-     * @return List<classType>
+     * @return List<T>
      * @throws JsonProcessingException
      */
     public List<T> listObject(HttpResponse response, Class<T> classType) throws JsonProcessingException {

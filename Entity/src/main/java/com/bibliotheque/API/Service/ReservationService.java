@@ -33,53 +33,76 @@ public class ReservationService {
     @Autowired
     ExemplaireService exemplaireService;
 
-
+    /**
+     * find All
+     * @return List<Reservation>
+     */
     public List<Reservation> findAll() {
         List<Reservation> reservations = this.reservationRepository.findAll();
         return reservations;
     }
 
-
-
-
+    /**
+     * Find Reservation By Id
+     * @param id
+     * @return Reservation
+     */
     public Reservation findById(int id) {
         logger.info("Reservation Id = " + id);
         Reservation reservation = this.reservationRepository.findById(id).get();
         return reservation;
     }
 
+    /**
+     * Delete
+     * @param id
+     */
     public void delete(int id) {
         logger.info("Delete reservation = " + id);
         reservationRepository.delete(findById(id));
     }
 
+    /**
+     * Save
+     * @param newReservationDTO
+     */
     public void save(NewReservationDTO newReservationDTO) {
-        logger.info("new reservation");
+        logger.info("new reservation = " + newReservationDTO);
+        System.out.println("la merde : " + newReservationDTO.idexemplaire + "  //  " + exemplaireRepository.findById(newReservationDTO.idexemplaire));
         Reservation reservation = new Reservation();
         reservation.setDate_debut(newReservationDTO.date_debut);
         reservation.setDate_fin(endReservationDate(newReservationDTO.date_debut));
-        reservation.setExemplaire(exemplaireRepository.findById(newReservationDTO.getIdexemplaire()).get());
-        reservation.setUser(userRepository.findById(newReservationDTO.getIduser()).get());
+        reservation.setExemplaire(exemplaireRepository.findById(newReservationDTO.idexemplaire));
+        reservation.setUser(userRepository.findById(newReservationDTO.iduser).get());
         reservation.setEnded(false);
         reservation.setExtension(false);
         reservationRepository.save(reservation);
-        Exemplaire exemplaire = this.exemplaireRepository.findById(newReservationDTO.getIdexemplaire()).get();
+        Exemplaire exemplaire = this.exemplaireRepository.findById(newReservationDTO.getIdexemplaire());
         exemplaire.setAvailable(false);
         logger.info("exemplaire = " + exemplaire.edition);
         exemplaireRepository.save(exemplaire);
 
     }
 
+    /**
+     * Reservation End Date
+     * @param date
+     * @return
+     */
     public Date endReservationDate (Date date){
 
         DateTime dn = new DateTime(date);
-        DateTime date_fin = dn.plusDays(7);
+        DateTime date_fin = dn.plusWeeks(4);
         Date dateFin = date_fin.toDate();
         logger.info("Date de début = " + date);
         logger.info("Date de fin = " + dateFin);
         return dateFin;
     }
 
+    /**
+     * Extension
+     * @param id
+     */
     public void extension (int id){
         logger.info("Update Started");
         Reservation reservation = reservationRepository.findById(id).get();
@@ -90,6 +113,11 @@ public class ReservationService {
 
     }
 
+    /**
+     * Find Reservation By User Connected
+     * @param token
+     * @return List<Reservation>
+     */
     public List<Reservation> findByUser(String token){
         String username = userService.findUsernameByToken(token);
         User user = userService.findByUsername(username);
@@ -98,6 +126,10 @@ public class ReservationService {
         return reservations;
     }
 
+    /**
+     * End Reservation
+     * @param id
+     */
     public void endReservation (int id){
         logger.info("ended reservation " + id);
         Reservation reservation = reservationRepository.findById(id).get();

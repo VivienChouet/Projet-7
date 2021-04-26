@@ -1,17 +1,26 @@
 package com.bibliotheque.batch.Service;
 
 import com.bibliotheque.batch.DTO.ReservationDTO;
+import com.sendgrid.Method;
+import com.sendgrid.Request;
+import com.sendgrid.Response;
+import com.sendgrid.SendGrid;
+import com.sendgrid.helpers.mail.Mail;
+import com.sendgrid.helpers.mail.objects.Content;
+import com.sendgrid.helpers.mail.objects.Email;
 import org.springframework.batch.item.ItemProcessor;
+
+import java.io.IOException;
 
 public class Processor implements ItemProcessor<ReservationDTO, ReservationDTO> {
 
     @Override
     public ReservationDTO process(ReservationDTO reservationDTO) throws Exception {
-
+/*
             System.out.println("email = " + reservationDTO.getUser().getEmail());
             System.out.println("user name = " + reservationDTO.getUser().getName());
             System.out.println("book = " + reservationDTO.getExemplaire().getBook().getTitle());
-/*
+*/
             Email from = new Email("slaschh@gmail.com");
             String subject = "Livre à retourner : " + reservationDTO.getExemplaire().getBook().getTitle();
             Email to = new Email(reservationDTO.getUser().getEmail());
@@ -36,9 +45,7 @@ public class Processor implements ItemProcessor<ReservationDTO, ReservationDTO> 
                 System.out.println("sg : " + sg.getRequestHeaders());
             } catch (IOException ex) {
                 throw ex;
-            }*/
-
-            //reservationDTO.setBatch(true);
+            }
 
         return reservationDTO;
     }

@@ -32,9 +32,9 @@
                                   th:if="${#fields.hasErrors('password')}"></span>
                         </div>
 
-                        <div class="form-group has-feedback" th:class="${#fields.hasErrors('name')}? has-error">
-                            <label>Nom</label>
-                            <input class="form-control" id="email" placeholder="Nom" th:field="*{email}">
+                        <div class="form-group has-feedback" th:class="${#fields.hasErrors('email')}? has-error">
+                            <label>email</label>
+                            <input class="form-control" id="email" placeholder="email" th:field="*{email}">
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                             <span class="text-danger" th:errors="*{email}"
                                   th:if="${#fields.hasErrors('email')}"></span>

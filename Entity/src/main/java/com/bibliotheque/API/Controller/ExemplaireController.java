@@ -3,6 +3,7 @@ package com.bibliotheque.API.Controller;
 
 import com.bibliotheque.API.Entity.Dto.ExemplaireDTO;
 import com.bibliotheque.API.Entity.Dto.NewExemplaireDTO;
+import com.bibliotheque.API.Entity.Dto.ReservationResearchDTO;
 import com.bibliotheque.API.Entity.Exemplaire;
 import com.bibliotheque.API.Entity.Mapper.ExemplaireMapper;
 import com.bibliotheque.API.Service.ExemplaireService;
@@ -28,6 +29,12 @@ public class ExemplaireController {
     @GetMapping("/")
     public ResponseEntity<List<ExemplaireDTO>> lsitExemplaire (){
         List<Exemplaire> exemplaires = this.exemplaireService.findAll();
+        return new ResponseEntity<>(exemplaireMapper.toDto(exemplaires), HttpStatus.OK);
+    }
+
+    @GetMapping("/available")
+    public ResponseEntity<List<ExemplaireDTO>> lsitExemplaireAvailable (){
+        List<Exemplaire> exemplaires = this.exemplaireService.findbyAvailable();
         return new ResponseEntity<>(exemplaireMapper.toDto(exemplaires), HttpStatus.OK);
     }
 
@@ -57,13 +64,20 @@ public class ExemplaireController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/book/{id}")
+    @GetMapping("/book/available/{id}")
     public ResponseEntity<List<ExemplaireDTO>> listExemplaireByBookId (@PathVariable int id){
-        List<Exemplaire> exemplaires = this.exemplaireService.findByBook_id(id);
+        List<Exemplaire> exemplaires = this.exemplaireService.findByBook_idAndAvailable(id);
         if (exemplaires == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(exemplaireMapper.toDto(exemplaires), HttpStatus.OK);
+    }
+
+    @PostMapping("/edition")
+        public ResponseEntity<List<ExemplaireDTO>> listExemplaireByEditionAndBook (@RequestBody ReservationResearchDTO reservationResearchDTO){
+        List<Exemplaire> exemplaires = this.exemplaireService.findByBook_idAndEdition(reservationResearchDTO.getId(),reservationResearchDTO.getEdition());
+
+        return new ResponseEntity<>(exemplaireMapper.toDto(exemplaires),HttpStatus.OK);
     }
 
 }
