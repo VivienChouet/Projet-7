@@ -59,9 +59,15 @@ public class UserService {
      * @param user
      */
     public void save(User user) {
-        logger.info("new user = " + user.name );
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        if(emailExists(user.email)) {
+            logger.info("new user = " + user.name);
+            System.out.println(emailExists(user.email));
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            userRepository.save(user);
+        }
+        else{
+            logger.warn("email exist");
+        }
     }
 
     /**
@@ -173,5 +179,11 @@ public class UserService {
         logger.info("Find User By Username = " + username );
         User user = userRepository.findByName(username);
         return user;
+    }
+
+    public boolean emailExists(final String email)
+    {
+        logger.info("find if email exist");
+        return userRepository.findByEmail(email)== null;
     }
 }

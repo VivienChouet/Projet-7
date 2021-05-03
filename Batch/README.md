@@ -2,6 +2,8 @@
 
 Batch ayant pour objectif d'envoyer des emails aux personnes n'ayant pas rendu leurs livres dans les temps.
 
+L'ensemble du projet est disponible sur Github : https://github.com/Slaschh/Projet-7
+
 
 # Technologie
     - Spring boot batch
@@ -10,5 +12,10 @@ Batch ayant pour objectif d'envoyer des emails aux personnes n'ayant pas rendu l
     
 # Bug connue
 
-- Log d'erreur lorsque la liste de reservation est vide.
-    - Source: (String)""; line: 1, column: 0
+# Déploiment 
+
+    Ce programme a été testé avec la version 9.0.43 de Tomcat
+
+   - Commencer par cloner le projet.
+   - Ensuite il vous faudra ensuite construire le projet via le terminal, en utilisant la commande maven "mvn package"
+  

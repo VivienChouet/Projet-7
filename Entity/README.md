@@ -1,6 +1,6 @@
 # Projet 7
 
-API pour le projet 7 du cursu Develloppeur JAVA de Openclassroom
+API pour le projet 7 du cursus Develloppeur JAVA de Openclassroom
 
 L'ensemble du projet est disponible sur Github : https://github.com/Slaschh/Projet-7
 
@@ -61,3 +61,12 @@ API permettant la gestion des stocks/emprunts de livre d'une bibliotheque.
 Systeme de recherche dans la db pour les livres
 
 ## Bug :
+
+## Déploiment 
+
+    Ce programme a été testé avec la version 9.0.43 de Tomcat
+    Ce programme utilise une DB gerer via MySQL v. 8.0.21
+
+   - Commencer par cloner le projet.
+   - Ensuite il vous faudra ensuite construire le projet via le terminal, en utilisant la commande maven "mvn package"
+  
